@@ -1,4 +1,4 @@
-# Modelado y Simulación de Robots 2022-2023
+# Modelado y Simulación de Robots 2024-2025
 
 ¡Bienvenido! En este repositorio se encuentran todos los materiales correspondientes a la asignatura de Modelado y Simulación de Robots.
 

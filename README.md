@@ -33,3 +33,11 @@ Directorio ['Diapositivas Teoría'](https://github.com/aleon2020/MYSDR_2024-2025
 ## 3. Prácticas
 
 Directorios ['Prácticas'](https://github.com/aleon2020/MYSDR_2024-2025/tree/main/Pr%C3%A1cticas): Este directorio contiene cada una de las prácticas realizadas en la asignatura.
+
+## 4. Referencias
+
+[GUÍA DE ESTILO](https://gitlab.eif.urjc.es/roberto.calvo/msr/-/wikis/GuiaEstilo)
+
+[WIKI DE LA ASIGNATURA](https://gitlab.eif.urjc.es/roberto.calvo/msr/-/wikis/home)
+
+[REPOSITORIO GITLAB DE LA ASIGNATURA](https://gitlab.eif.urjc.es/roberto.calvo/msr)

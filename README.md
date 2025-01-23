@@ -36,6 +36,12 @@ Directorios ['Prácticas'](https://github.com/aleon2020/MYSDR_2024-2025/tree/mai
 
 ## 4. Referencias
 
+Ejecuta el siguiente comando desde los ordenadores de la universidad para confirmar la asistencia a clase:
+
+```sh
+~rocapal/class/attendance MSR
+```
+
 [GUÍA DE ESTILO](https://gitlab.eif.urjc.es/roberto.calvo/msr/-/wikis/GuiaEstilo)
 
 [WIKI DE LA ASIGNATURA](https://gitlab.eif.urjc.es/roberto.calvo/msr/-/wikis/home)

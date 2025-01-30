@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<robot name="myrobot">
+
+     <!-- IMPORTANTE, los tamaños de los links siempre van referenciados desde el centroide -->
+
+     <!-- Fijate, la base comienza en el (0,0,0) y tiene 0.2 de altura, por tanto
+     sabemos que esta caja estará entre -0.1 y 0.1 (ya que comienza desde el centroide)
+        -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0.1" />
+            <geometry>
+                <box size="0.4 0.4 0.2" />
+            </geometry>
+        </visual>
+
+    </link>
+</robot>

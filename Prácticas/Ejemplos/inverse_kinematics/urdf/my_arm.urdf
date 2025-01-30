@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="test_join">
+
+    <link name="top_platform">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="5.0"/>
+        <inertia ixx="0.04167" ixy="0" ixz="0" iyy="2.60833" iyz="0" izz="2.64167"/>
+      </inertial>
+      <visual name="Cube.001">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.5 0.3 0.1"/>
+        </geometry>
+      </visual>
+      <collision name="Cube.001">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.5 0.3 0.1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_1">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="Cube.002">
+        <origin xyz="0.49284 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="1.0 0.2 0.1"/>
+        </geometry>
+      </visual>
+      <collision name="Cube.002">
+        <origin xyz="0.49284 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="1.0 0.2 0.1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_2">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="Cube.003">
+        <origin xyz="0.32461 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.7 0.05 0.05"/>
+        </geometry>
+      </visual>
+      <collision name="Cube.003">
+        <origin xyz="0.32461 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.7 0.05 0.05"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="grip_1">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="Cube.004">
+        <origin xyz="0.10334 0.00173 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.025 0.025"/>
+        </geometry>
+      </visual>
+      <collision name="Cube.004">
+        <origin xyz="0.10334 0.00173 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.025 0.025"/>
+        </geometry>
+       </collision>
+    </link>
+
+    <link name="grip_2">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="Cube.005">
+        <origin xyz="0.11039 -0.00468 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.025 0.025"/>
+        </geometry>
+      </visual>
+       <collision name="Cube.005">
+        <origin xyz="0.11039 -0.00468 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.025 0.025"/>
+        </geometry>
+      </collision>
+    </link>
+
+<!--
+    <link name="sphere">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="Sphere">
+        <origin xyz="0 -0.03348 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.15"/>
+        </geometry>
+      </visual>
+    </link>
+-->
+    <link name="root_column">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="10000.0"/>
+        <inertia ixx="53.14702" ixy="0" ixz="0" iyy="14.61586" iyz="0" izz="616.66663"/>
+      </inertial>
+      <visual name="Cube">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.35" length="2.0"/>
+        </geometry>
+        <material name="Material"/>
+      </visual>
+      <collision name="Cube">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.35" length="2.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="joint_root_column" type="continuous">
+      <origin xyz="0.01884 0.00421 1.07005" rpy="0 0 0"/>
+      <parent link="root_column"/>
+      <child link="top_platform"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="joint_top_platform_arm1" type="revolute">
+      <origin xyz="1.18826 -0.00436 -0.00316" rpy="1.5708 0 0"/>
+      <parent link="top_platform"/>
+      <child link="arm_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.1" upper="3.1" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="joint_arm1_arm2" type="revolute">
+      <origin xyz="0.97252 -0.00091 0.00602" rpy="0 0 0"/>
+      <parent link="arm_1"/>
+      <child link="arm_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-2.0" upper="2.0" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="joint_arm2_grip1" type="revolute">
+      <origin xyz="0.66749 0.00404 0.01136" rpy="-1.5708 -0.34907 0"/>
+      <parent link="arm_2"/>
+      <child link="grip_1"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.0" upper="1.0" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="joint_arm2_grip2" type="revolute">
+      <origin xyz="0.6569 0.0025 -0.01508" rpy="-1.5708 0.34907 0"/>
+      <parent link="arm_2"/>
+      <child link="grip_2"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.0" upper="1.0" effort="0" velocity="0"/>
+    </joint>
+
+<!--
+    <joint name="joint_arm2_sphere" type="floating">
+      <origin xyz="0.03367 0.00604 -0.03307" rpy="-1.5708 0 0"/>
+      <parent link="arm_2"/>
+      <child link="sphere"/>
+    </joint>
+-->
+    <material name="Material">
+      <color rgba="0.64 0.64 0.64 1.0"/>
+    </material>
+
+  </robot>

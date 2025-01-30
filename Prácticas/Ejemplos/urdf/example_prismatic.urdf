@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="simple_robot">
+
+  <!-- Definición del primer enlace: un cubo (base) -->
+  <link name="base_link">
+    <inertial>
+     <origin xyz="0 0 0.1" />
+      <mass value="1000.0"/> <!-- Masa del cubo en kg -->
+      <inertia ixx="83.333" ixy="0" ixz="0" iyy="83.333" iyz="0" izz="83.333"/> <!-- Tensor de inercia simplificado -->
+    </inertial>
+    <visual>
+     <origin xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.5 0.5 0.5"/> <!-- Dimensiones visuales del cubo -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/> <!-- Color visual del cubo -->
+      </material>
+    </visual>
+    <collision>
+     <origin xyz="0 0 0.1" />
+      <geometry>
+        <box size="0.5 0.5 0.5"/> <!-- Dimensiones de colisión del cubo -->
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Definición del segundo enlace: una pieza deslizante -->
+  <link name="sliding_part">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.1" />
+      <geometry>
+        <box size="0.1 0.6 0.1"/> <!-- Dimensiones visuales de la pieza deslizante -->
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/> <!-- Color visual de la pieza deslizante -->
+      </material>
+    </visual>
+    <collision>
+    <origin rpy="0 0 0" xyz="0 0 -0.1" />
+      <geometry>      
+        <box size="0.1 0.6 0.1"/> <!-- Dimensiones de colisión de la pieza deslizante -->
+      </geometry>
+    </collision>
+    
+  </link>
+
+  <!-- Definición de la articulación prismática que permite el deslizamiento de la pieza deslizante -->
+  <joint name="base_to_sliding_part_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="sliding_part"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/> <!-- Posiciona la pieza deslizante encima del cubo -->
+    <axis xyz="0 1  0"/> <!-- Eje de deslizamiento: a lo largo del eje Y -->
+    <limit lower="-0.5" upper="0.5" effort="500" velocity="0.5"/> <!-- Límites del deslizamiento -->
+  </joint>
+
+</robot>

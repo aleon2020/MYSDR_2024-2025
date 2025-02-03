@@ -28,6 +28,7 @@ robotId = p.loadURDF(urdf_path, startPos, startOrientation)
 
 numJoints = p.getNumJoints(robotId)
 print("NumJoints: {}".format(numJoints))
+
 for j in range(numJoints):
      print("{} - {}".format(p.getJointInfo(robotId, j)[0], p.getJointInfo(robotId, j)[1].decode("utf-8")))
 

@@ -64,20 +64,17 @@ while (1):
   p.setJointMotorControlArray(robotId,
                               joints,
                               p.VELOCITY_CONTROL,
-                              targetVelocities=[-speed_left, -speed_left, -speed_right, -speed_right]
-  )
+                              targetVelocities=[-speed_left, -speed_left, -speed_right, -speed_right])
 
   p.setJointMotorControlArray(robotId,
                               gripper_joints,
                               p.POSITION_CONTROL,
-                              targetVelocities=[speed_gripper, speed_gripper]
-  )
+                              targetVelocities=[speed_gripper, speed_gripper])
 
   p.setJointMotorControlArray(robotId,
                               gripper_extension,
                               p.POSITION_CONTROL,
-                              targetVelocities= [speed_extension]
-  )
+                              targetVelocities= [speed_extension])
 
   frictionForce = p.readUserDebugParameter(frictionId)
   jointTorque = p.readUserDebugParameter(torqueId)

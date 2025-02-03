@@ -47,13 +47,15 @@ while (1):
   spinningFriction = p.readUserDebugParameter(spinningFrictionId)
   rollingFriction = p.readUserDebugParameter(rollingFrictionId)
   
+  # p.changeDynamics()
+  # Cambia la diagonal inercial de la matriz programáticamente.
   p.changeDynamics(plane, -1, lateralFriction=1)
   p.changeDynamics(sphere, -1, lateralFriction=lateralFriction)
   p.changeDynamics(sphere, -1, spinningFriction=spinningFriction)
   p.changeDynamics(sphere, -1, rollingFriction=rollingFriction)
-
   p.changeDynamics(plane, -1, restitution=restitution)
   p.changeDynamics(sphere, -1, restitution=restitution)
+
   pos, orn = p.getBasePositionAndOrientation(sphere)
   # print("pos=")
   # print(pos)

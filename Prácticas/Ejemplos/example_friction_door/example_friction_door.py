@@ -21,7 +21,8 @@ planeId = p.loadURDF("plane.urdf")
 robotId = p.loadURDF("r2d2.urdf",[0.5, -1, 1])
 doorId = p.loadURDF(urdf_path)
 
-#linear/angular damping for base and all children=0
+# p.changeDynamics()
+# Cambia la diagonal inercial de la matriz programáticamente.
 p.changeDynamics(doorId, -1, linearDamping=0, angularDamping=0)
 for j in range(p.getNumJoints(doorId)):
   p.changeDynamics(doorId, j, linearDamping=0, angularDamping=0)

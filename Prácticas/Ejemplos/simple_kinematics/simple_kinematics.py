@@ -61,6 +61,7 @@ for i in range(len(jointPoses)):
                                     force=500,
                                     positionGain=0.03,
                                     velocityGain=1)
+    
 while(1):
 
     # No es necesario, solo para ver más despacio el movimiento.

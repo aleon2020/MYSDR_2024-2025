@@ -44,7 +44,7 @@ prevPose1 = [0, 0, 0]
 hasPrevPose = 1
 
 # Solo queremos que la cinemática inversa actue sobre los primeros 3 JOINTS
-robotEndEffectorIndex=4
+robotEndEffectorIndex = 4
 going = True
 
 # Vamos a posicionar el brazo por una diagonal X,Y usando la misma altura (Z)

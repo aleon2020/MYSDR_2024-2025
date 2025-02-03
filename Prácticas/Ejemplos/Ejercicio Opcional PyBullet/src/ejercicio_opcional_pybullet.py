@@ -55,6 +55,7 @@ for i in range (10000):
                             p.VELOCITY_CONTROL, 
                             targetVelocity=0, 
                             force=frictionForceBase)
+    
     p.setJointMotorControl2(robotId, 
                             1, 
                             p.VELOCITY_CONTROL, 
@@ -68,6 +69,7 @@ for i in range (10000):
                             0, 
                             p.TORQUE_CONTROL, 
                             force=jointTorqueBase)
+    
     p.setJointMotorControl2(robotId, 
                             1, 
                             p.TORQUE_CONTROL, 

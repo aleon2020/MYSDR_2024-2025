@@ -16,7 +16,8 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 # Cargamos un/unos modelo/s
 door = p.loadURDF(urdf_path)
 
-# linear/angular damping for base and all children=0
+# p.changeDynamics()
+# Cambia la diagonal inercial de la matriz programáticamente.
 p.changeDynamics(door, -1, linearDamping=0, angularDamping=0)
 for j in range(p.getNumJoints(door)):
   p.changeDynamics(door, j, linearDamping=0, angularDamping=0)

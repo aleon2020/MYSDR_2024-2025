@@ -61,6 +61,9 @@ while (1):
   speed_gripper = p.readUserDebugParameter(gripper_movement)
   speed_extension = p.readUserDebugParameter(extension_movement)
 
+  # setJointMotorControlArray()
+  # Usado cuando el movimiento está relacionado con la activación
+  # de varios joints simultáneamente.
   p.setJointMotorControlArray(robotId,
                               joints,
                               p.VELOCITY_CONTROL,

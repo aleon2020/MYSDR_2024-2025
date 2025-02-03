@@ -1,8 +1,7 @@
 # Imports de las librerías
 import pybullet as p
-import pybullet_data
-import argparse
 import time
+import pybullet_data
 
 # Conectamos motor con GUI
 cid = p.connect(p.SHARED_MEMORY)
@@ -20,7 +19,7 @@ spinningFrictionId = p.addUserDebugParameter("spinning friction", 0, 1, 0.03)
 rollingFrictionId = p.addUserDebugParameter("rolling friction", 0, 1, 0.03)
 
 # Cargamos un/unos modelo/s
-plane = p.loadURDF("plane_transparent.urdf")
+plane = p.loadURDF("plane.urdf")
 sphere = p.loadURDF("sphere_with_restitution.urdf", [0, 0, 2])
 
 # p.setRealTimeSimulation()
@@ -38,7 +37,7 @@ while (1):
   # del parámetro de depuración de la siguiente manera.
   restitution = p.readUserDebugParameter(restitutionId)
   restitutionVelocityThreshold = p.readUserDebugParameter(restitutionVelocityThresholdId)
-
+  
   p.setPhysicsEngineParameter(restitutionVelocityThreshold=restitutionVelocityThreshold)
 
   # Desde el bucle de control, puedes obtener los cambios 
@@ -46,7 +45,7 @@ while (1):
   lateralFriction = p.readUserDebugParameter(lateralFrictionId)
   spinningFriction = p.readUserDebugParameter(spinningFrictionId)
   rollingFriction = p.readUserDebugParameter(rollingFrictionId)
-  
+
   # p.changeDynamics()
   # Cambia la diagonal inercial de la matriz programáticamente.
   p.changeDynamics(plane, -1, lateralFriction=1)

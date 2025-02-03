@@ -55,6 +55,8 @@ try:
         right_motor_value = p.readUserDebugParameter(right_id)
         left_motor_value = p.readUserDebugParameter(left_id)
         
+        # setJointMotorControl2()
+        # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
         p.setJointMotorControl2(robotId, 1, p.VELOCITY_CONTROL, targetVelocity=right_motor_value)
         p.setJointMotorControl2(robotId, 0, p.VELOCITY_CONTROL, targetVelocity=left_motor_value)
         

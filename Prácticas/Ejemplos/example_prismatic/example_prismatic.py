@@ -46,6 +46,9 @@ try:
         time.sleep(1./240.)
         # Velocity control
         # p.setJointMotorControl2(robotId,0, p.VELOCITY_CONTROL, targetVelocity=0.2)
+
+        # setJointMotorControl2()
+        # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
         p.setJointMotorControl2(robotId, 0, p.POSITION_CONTROL, targetPosition=1)
 
 except KeyboardInterrupt:

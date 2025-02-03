@@ -28,9 +28,11 @@ torqueId = p.addUserDebugParameter("joint torque", 0, 20, 5)
 while (1):
   frictionForce = p.readUserDebugParameter(frictionId)
   jointTorque = p.readUserDebugParameter(torqueId)
-  # set the joint friction
+
+  # setJointMotorControl2()
+  # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
   p.setJointMotorControl2(door, 1, p.VELOCITY_CONTROL, targetVelocity=0, force=frictionForce)
-  # apply a joint torque
   p.setJointMotorControl2(door, 1, p.TORQUE_CONTROL, force=jointTorque)
+  
   p.stepSimulation()
   time.sleep(0.01)

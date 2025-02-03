@@ -31,8 +31,16 @@ while (1):
 
   # setJointMotorControl2()
   # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
+  # VELOCITY_CONTROL
+  # - Establece una velocidad fija al joint.
+  # - Es necesario pasar targetVelocity y opcionalmente force.
+  # - force define la fuerza motor (par motor, o momento de fuerza).
   p.setJointMotorControl2(door, 1, p.VELOCITY_CONTROL, targetVelocity=0, force=frictionForce)
-  p.setJointMotorControl2(door, 1, p.TORQUE_CONTROL, force=jointTorque)
   
+  # TORQUE_CONTROL
+  # - Establece el torque o momento de fuerza instantáneamente sobre un joint.
+  # - Es necesario pasar force que establece la fuerza.
+  p.setJointMotorControl2(door, 1, p.TORQUE_CONTROL, force=jointTorque)
+
   p.stepSimulation()
   time.sleep(0.01)

@@ -57,6 +57,10 @@ try:
         
         # setJointMotorControl2()
         # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
+        # VELOCITY_CONTROL
+        # - Establece una velocidad fija al joint.
+        # - Es necesario pasar targetVelocity y opcionalmente force.
+        # - force define la fuerza motor (par motor, o momento de fuerza).
         p.setJointMotorControl2(robotId, 1, p.VELOCITY_CONTROL, targetVelocity=right_motor_value)
         p.setJointMotorControl2(robotId, 0, p.VELOCITY_CONTROL, targetVelocity=left_motor_value)
         

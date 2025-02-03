@@ -1,38 +1,50 @@
+# Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
-import numpy as np
+import argparse
 import time
-from simple_pid import PID
+import numpy as np
 import math
 
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/my_arm.urdf"
 
+# Conectamos motor con GUI
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
-p.setGravity(0,0,-9.8)
+
+# Establecemos gravedad (X,Y,Z)
+p.setGravity(0, 0, -9.8)
+
+# p.setRealTimeSimulation()
+# El motor de físicas no realiza pausas en la simulación.
+# Ejecuta en tiempo real acorde al RTC del sistema.
+# Depende del rendimiento del sistema.
 p.setRealTimeSimulation(1)
 
+# Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane.urdf")
 
-robotId = p.loadURDF("./urdf/my_arm.urdf", [0,0,1.0])
-#robotId = p.loadURDF("kuka_iiwa/model.urdf", [0, 0, 0], useFixedBase=True)
+# Cargamos un nuevo objeto, con una posición (x,y,z)
+# y una orientación dada en cuaternión (X,Y,Z)
+robotId = p.loadURDF(urdf_path, [0, 0, 1.0])
+# robotId = p.loadURDF("kuka_iiwa/model.urdf", [0, 0, 0], useFixedBase=True)
 
 numJoints = p.getNumJoints(robotId)
 print("NumJoints: " + str(numJoints))
 
-
 for j in range (numJoints):
     print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
-
 
 # Solo queremos que la cinemática inversa actue sobre los primeros 3 JOINTS
 robotEndEffectorIndex=3
 
-
-pos_target = [1,1,1]
+pos_target = [1, 1, 1]
 jointPoses = p.calculateInverseKinematics(robotId, robotEndEffectorIndex, pos_target)
 print(jointPoses)
-p.addUserDebugText("X", pos_target, [1,0,0], 1)
+p.addUserDebugText("X", pos_target, [1, 0, 0], 1)
 
 
 for i in range(len(jointPoses)):

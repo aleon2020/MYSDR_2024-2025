@@ -1,8 +1,12 @@
 # Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
+import argparse
+import time
 
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
 urdf_path = "urdf/example_prismatic.urdf"
 
 # Conectamos motor con GUI
@@ -10,22 +14,22 @@ physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Establecemos gravedad (X,Y,Z)
-p.setGravity(0,0,-9.8)
+p.setGravity(0, 0, -9.8)
 
 # Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane_transparent.urdf")
 
-startPos = [0,0,1]
-startOrientation = p.getQuaternionFromEuler([0,0,-3.15])
+startPos = [0, 0, 1]
+startOrientation = p.getQuaternionFromEuler([0, 0, -3.15])
 
 # Cargamos un nuevo objeto, con una posición (x,y,z)
 # y una orientación dada en cuaternión (X,Y,Z)
-robotId = p.loadURDF(urdf_path,startPos, startOrientation)
+robotId = p.loadURDF(urdf_path, startPos, startOrientation)
 
 numJoints = p.getNumJoints(robotId)
 print("NumJoints: {}".format(numJoints))
 for j in range(numJoints):
-     print("{} - {}".format(p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
+     print("{} - {}".format(p.getJointInfo(robotId, j)[0], p.getJointInfo(robotId, j)[1].decode("utf-8")))
 
 # p.stepSimulation()
 # La simulación avanza solo un "step" (paso) de acuerdo con los pasos 
@@ -41,7 +45,7 @@ try:
         time.sleep(1./240.)
         # Velocity control
         # p.setJointMotorControl2(robotId,0, p.VELOCITY_CONTROL, targetVelocity=0.2)
-        p.setJointMotorControl2(robotId,0, p.POSITION_CONTROL, targetPosition=1)
+        p.setJointMotorControl2(robotId, 0, p.POSITION_CONTROL, targetPosition=1)
 
 except KeyboardInterrupt:
       pass

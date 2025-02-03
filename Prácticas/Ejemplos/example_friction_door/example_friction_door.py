@@ -1,19 +1,25 @@
 # Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
+import argparse
+import time
+
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/door.urdf"
 
 # Conectamos motor con GUI
 p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Establecemos gravedad (X,Y,Z)
-p.setGravity(0,0,-9.8)
+p.setGravity(0, 0, -9.8)
 
 # Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane.urdf")
-robotId = p.loadURDF("r2d2.urdf",[0.5,-1,1])
-doorId = p.loadURDF("urdf/door.urdf")
+robotId = p.loadURDF("r2d2.urdf",[0.5, -1, 1])
+doorId = p.loadURDF(urdf_path)
 
 #linear/angular damping for base and all children=0
 p.changeDynamics(doorId, -1, linearDamping=0, angularDamping=0)
@@ -32,7 +38,7 @@ print("NumJoints: " + str(numJoints))
 for j in range (numJoints):
     print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
 
-joints = [2,3,6,7]
+joints = [2, 3, 6, 7]
 
 speedId = p.addUserDebugParameter("R2D2_speed", 0, 40, 5)
 forceId = p.addUserDebugParameter("R2D2_force", 0, 40, 5)
@@ -52,8 +58,8 @@ while (1):
   p.setJointMotorControlArray(robotId,
                               joints,
                               p.VELOCITY_CONTROL,
-                              targetVelocities=[-speed,-speed,-speed,-speed],
-                              forces=[torque,torque,torque,torque])
+                              targetVelocities=[-speed, -speed, -speed, -speed],
+                              forces=[torque, torque, torque, torque])
 
   frictionForce = p.readUserDebugParameter(frictionId)
   jointTorque = p.readUserDebugParameter(torqueId)

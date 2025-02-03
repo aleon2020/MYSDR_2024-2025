@@ -1,8 +1,14 @@
 # Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
+import argparse
+import time
 
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+
+# Conectamos motor con GUI
 cid = p.connect(p.SHARED_MEMORY)
 if (cid < 0):
   cid = p.connect(p.GUI)
@@ -28,7 +34,7 @@ sphere = p.loadURDF("sphere_with_restitution.urdf", [0, 0, 2])
 p.setRealTimeSimulation(1)
 
 # Establecemos gravedad (X,Y,Z)
-p.setGravity(0, 0, -10)
+p.setGravity(0, 0, -9.8)
 
 while (1):
 

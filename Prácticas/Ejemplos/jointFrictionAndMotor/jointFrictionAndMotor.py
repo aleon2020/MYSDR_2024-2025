@@ -1,11 +1,20 @@
+# Imports de las librerías
 import pybullet as p
+import pybullet_data
+import argparse
 import time
 
-import pybullet_data
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/door.urdf"
 
-p.connect(p.GUI)
+# Conectamos motor con GUI
+physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
-door = p.loadURDF("urdf/door.urdf")
+
+# Cargamos un/unos modelo/s
+door = p.loadURDF(urdf_path)
 
 # linear/angular damping for base and all children=0
 p.changeDynamics(door, -1, linearDamping=0, angularDamping=0)

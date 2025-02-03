@@ -1,29 +1,42 @@
+# Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
-import numpy as np
+import argparse
 import time
-
+import numpy as np
 import math
 
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/my_arm.urdf"
 
+# Conectamos motor con GUI
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
-p.setGravity(0,0,-9.8)
+
+# Establecemos gravedad (X,Y,Z)
+p.setGravity(0, 0, -9.8)
+
+# p.setRealTimeSimulation()
+# El motor de físicas no realiza pausas en la simulación.
+# Ejecuta en tiempo real acorde al RTC del sistema.
+# Depende del rendimiento del sistema.
 p.setRealTimeSimulation(1)
 
+# Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane.urdf")
 
-robotId = p.loadURDF("./urdf/my_arm.urdf", [0,0,1.0])
+# Cargamos un nuevo objeto, con una posición (x,y,z)
+# y una orientación dada en cuaternión (X,Y,Z)
+robotId = p.loadURDF(urdf_path, [0, 0, 1.0])
 #robotId = p.loadURDF("kuka_iiwa/model.urdf", [0, 0, 0], useFixedBase=True)
 
 numJoints = p.getNumJoints(robotId)
 print("NumJoints: " + str(numJoints))
 
-
 for j in range (numJoints):
-    print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
-
+    print("%d - %s" % (p.getJointInfo(robotId, j)[0], p.getJointInfo(robotId, j)[1].decode("utf-8")))
 
 trailDuration = 5
 prevPose = [0, 0, 0]
@@ -36,7 +49,7 @@ going = True
 
 # Vamos a posicionar el brazo por una diagonal X,Y usando la misma altura (Z)
 # El rango máximo/minimo definido
-range_m=[0.3,2.0]
+range_m=[0.3, 2.0]
 
 c=range_m[0]
 
@@ -55,7 +68,6 @@ while (1):
 
     if (c>range_m[1]): going=False
     elif (c<range_m[0]): going=True
-
 
     # Calculamos los angulos/posiciones de los joints dependiendo del punto objetivo 'pos_target'
 
@@ -81,6 +93,5 @@ while (1):
     prevPose = pos_target
     prevPose1 = ls[4]
     hasPrevPose = 1
-
 
 p.disconnect()

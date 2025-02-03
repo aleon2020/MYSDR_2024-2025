@@ -14,17 +14,17 @@ physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Establecemos gravedad (X,Y,Z)
-p.setGravity(0,0,-9.8)
+p.setGravity(0, 0, -9.8)
 
 # Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane_transparent.urdf")
 
-startPos = [0,0,1]
-startOrientation = p.getQuaternionFromEuler([0,0,-3.15])
+startPos = [0, 0, 1]
+startOrientation = p.getQuaternionFromEuler([0, 0, -3.15])
 
 # Cargamos un nuevo objeto, con una posición (x,y,z)
 # y una orientación dada en cuaternión (X,Y,Z)
-robotId = p.loadURDF(urdf_path,startPos, startOrientation)
+robotId = p.loadURDF(urdf_path, startPos, startOrientation)
 
 # p.setRealTimeSimulation()
 # El motor de físicas no realiza pausas en la simulación.

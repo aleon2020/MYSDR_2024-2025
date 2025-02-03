@@ -1,18 +1,30 @@
+# Imports de las librerías
 import pybullet as p
 import pybullet_data
+import argparse
 import time
 
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/ejercicio_opcional_pybullet.urdf"
+
+# Conectamos motor con GUI
 physicsClient = p.connect (p.GUI)
 p.setAdditionalSearchPath (pybullet_data.getDataPath())
-p.setGravity (0, 0, -9.81)
 
+# Establecemos gravedad (X,Y,Z)
+p.setGravity (0, 0, -9.8)
+
+# Cargamos un/unos modelo/s
 planeId = p.loadURDF ("plane.urdf")
 
-euler_angles = [0, 0, 0]
-startOrientation = p.getQuaternionFromEuler(euler_angles)
 startPosition = [0, 0, 1]
+startOrientation = p.getQuaternionFromEuler([0, 0, 0])
 
-robotId = p.loadURDF ("urdf/ejercicio_opcional_pybullet.urdf", startPosition, startOrientation)
+# Cargamos un nuevo objeto, con una posición (x,y,z)
+# y una orientación dada en cuaternión (X,Y,Z)
+robotId = p.loadURDF (urdf_path, startPosition, startOrientation)
 
 frictionIdBase = p.addUserDebugParameter("BASE_jointFriction", 0, 100, 10)
 torqueIdBase = p.addUserDebugParameter("BASE_joint torque", -20, 20, -9)

@@ -1,19 +1,25 @@
 # Imports de las librerías
 import pybullet as p
-import time
 import pybullet_data
+import argparse
+import time
+
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
+urdf_path = "urdf/door.urdf"
 
 # Conectamos motor con GUI
 p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # Establecemos gravedad (X,Y,Z)
-p.setGravity(0,0,-9.8)
+p.setGravity(0, 0, -9.8)
 
 # Cargamos un/unos modelo/s
 planeId = p.loadURDF("plane.urdf")
-robotId = p.loadURDF("r2d2.urdf",[0.5,-1,1])
-doorId = p.loadURDF("urdf/door.urdf")
+robotId = p.loadURDF("r2d2.urdf",[0.5, -1, 1])
+doorId = p.loadURDF(urdf_path)
 
 #linear/angular damping for base and all children=0
 p.changeDynamics(doorId, -1, linearDamping=0, angularDamping=0)
@@ -30,18 +36,16 @@ numJoints = p.getNumJoints(robotId)
 print("NumJoints: " + str(numJoints))
 
 for j in range (numJoints):
-    print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
+    print("%d - %s" % (p.getJointInfo(robotId, j)[0], p.getJointInfo(robotId, j)[1].decode("utf-8")))
 
-joints = [2,3,6,7]
-gripper_joints = [9,11]
+joints = [2, 3, 6, 7]
+gripper_joints = [9, 11]
 gripper_extension = [8]
 
-# speedId = p.addUserDebugParameter("R2D2_speed", 0, 40, 5)
 turn_left = p.addUserDebugParameter("turn_left", -40, 40, 0)
 turn_right = p.addUserDebugParameter("turn_right", -40, 40, 0)
 gripper_movement = p.addUserDebugParameter("gripper_movement", 0, 20, 0)
 extension_movement = p.addUserDebugParameter("extension_movement", -10, 0, 0)
-# forceId = p.addUserDebugParameter("R2D2_force", 0, 40, 5)
 
 # p.stepSimulation()
 # La simulación avanza solo un "step" (paso) de acuerdo con los pasos 
@@ -52,32 +56,27 @@ while (1):
 
   # Desde el bucle de control, puedes obtener los cambios 
   # del parámetro de depuración de la siguiente manera.
-  # speed = p.readUserDebugParameter(speedId)
   speed_left = p.readUserDebugParameter(turn_left)
   speed_right = p.readUserDebugParameter(turn_right)
   speed_gripper = p.readUserDebugParameter(gripper_movement)
   speed_extension = p.readUserDebugParameter(extension_movement)
-  # torque = p.readUserDebugParameter(forceId)
 
   p.setJointMotorControlArray(robotId,
                               joints,
                               p.VELOCITY_CONTROL,
-                              targetVelocities=[-speed_left,-speed_left,-speed_right,-speed_right]
-                              # forces=[torque,torque,torque,torque])
+                              targetVelocities=[-speed_left, -speed_left, -speed_right, -speed_right]
   )
 
   p.setJointMotorControlArray(robotId,
                               gripper_joints,
                               p.POSITION_CONTROL,
                               targetVelocities=[speed_gripper, speed_gripper]
-                              # forces=[torque,torque,torque,torque])
   )
 
   p.setJointMotorControlArray(robotId,
                               gripper_extension,
                               p.POSITION_CONTROL,
                               targetVelocities= [speed_extension]
-                              # forces=[torque,torque,torque,torque])
   )
 
   frictionForce = p.readUserDebugParameter(frictionId)

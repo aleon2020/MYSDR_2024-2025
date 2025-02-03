@@ -46,8 +46,13 @@ jointPoses = p.calculateInverseKinematics(robotId, robotEndEffectorIndex, pos_ta
 print(jointPoses)
 p.addUserDebugText("X", pos_target, [1, 0, 0], 1)
 
-
 for i in range(len(jointPoses)):
+
+    # setJointMotorControl2()
+    # Permite configurar diferentes velocidades y fuerzas a las articulaciones.
+    # POSITION_CONTROL
+    # - Mueve el joint a una posición determinada con una velocidad fijada.
+    # - Es necesario pasar targetPosition y targetVelocity.
     p.setJointMotorControl2(bodyIndex=robotId,
                                     jointIndex=i,
                                     controlMode=p.POSITION_CONTROL,

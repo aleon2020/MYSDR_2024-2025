@@ -52,7 +52,10 @@ try:
         # POSITION_CONTROL
         # - Mueve el joint a una posición determinada con una velocidad fijada.
         # - Es necesario pasar targetPosition y targetVelocity.
-        p.setJointMotorControl2(robotId, 0, p.POSITION_CONTROL, targetPosition=1)
+        p.setJointMotorControl2(robotId, 
+                                0, 
+                                p.POSITION_CONTROL, 
+                                targetPosition=1)
 
 except KeyboardInterrupt:
       pass

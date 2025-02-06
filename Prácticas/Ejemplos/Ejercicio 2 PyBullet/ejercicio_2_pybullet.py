@@ -24,12 +24,12 @@ robotId = p.loadURDF("r2d2.urdf", startPosition, startOrientation)
 
 # Generación de 6 parámetros de depuración para traslación y rotación
 # de un objeto de la escena.
-tx = p.addUserDebugParameter("Traslación X", -5, 5, 0)
-ty = p.addUserDebugParameter("Traslación Y", -5, 5, 0)
-tz = p.addUserDebugParameter("Traslación Z", 0, 2, 1)
-rx = p.addUserDebugParameter("Rotación X", -math.pi, math.pi, 0)
-ry = p.addUserDebugParameter("Rotación Y", -math.pi, math.pi, 0)
-rz = p.addUserDebugParameter("Rotación Z", -math.pi, math.pi, 0)
+tx = p.addUserDebugParameter("x_pos", -5, 5, 0)
+ty = p.addUserDebugParameter("y_pos", -5, 5, 0)
+tz = p.addUserDebugParameter("z_pos", 0.5, 5, 0.5)
+rx = p.addUserDebugParameter("x_euler", 0, 2 * math.pi, 0)
+ry = p.addUserDebugParameter("y_euler", 0, 2 * math.pi, 0)
+rz = p.addUserDebugParameter("z_euler", 0, 2 * math.pi, 0)
 
 # Bucle principal que ejecuta los pasos de la simulación.
 # Por defecto utilizaremos siempre time step de 1/240 segundos.

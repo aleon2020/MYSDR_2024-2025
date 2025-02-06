@@ -1,37 +1,54 @@
+# Imports de las librerías.
 import pybullet as p
 import pybullet_data
+import argparse
 import time
 
-p.connect(p.GUI)
-p.setAdditionalSearchPath(pybullet_data.getDataPath())
-p.setGravity(0, 0, 0)  # Desactivamos la gravedad del motor de Bullet
-    
-# Cargar el suelo
-plane_id = p.loadURDF("plane.urdf")
-    
-# Crear la esfera en 3 metros de altura
-sphere_radius = 0.1
-sphere_start_height = 3.0
-sphere_id = p.loadURDF("sphere_with_restitution.urdf", [0, 0, sphere_start_height])
-    
-# Parámetros de simulación
-g = -9.81  # Gravedad (m/s^2)
-dt = 1/240  # Paso de tiempo de la simulación
-velocity = 0  # Velocidad inicial
-position = sphere_start_height  # Posición inicial
-    
-while position > sphere_radius:
-# while (1):
+parser = argparse.ArgumentParser(description="URDF viewer example")
+parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
+args = parser.parse_args()
 
-    velocity += g * dt  # v = v0 + a*t
-    position += velocity * dt  # x = x0 + v*t + (1/2)*a*t^2 (simplificado por el bucle)
-        
-    # Actualizar la posición de la esfera en PyBullet
-    p.resetBasePositionAndOrientation(sphere_id, [0, 0, position], [0, 0, 0, 1])
-        
-    p.stepSimulation()
-    time.sleep(dt)  # Simular en tiempo real
+dt = 0.01
+altura_inicial = 3.0
+velocidad = 0.0
+
+# Conectamos motor con GUI.
+physicsClient = p.connect(p.GUI)
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+
+# Establecemos gravedad (X,Y,Z).
+p.setGravity(0, 0, 0)
+
+# Cargamos un/unos modelo/s.
+planeId = p.loadURDF("plane.urdf")
+
+startPosition = [0, 0, 0.3]
+startOrientation = p.getQuaternionFromEuler([0, 0, 0])
+
+# Cargamos un nuevo objeto, con una posición (x,y,z)
+# y una orientación dada en cuaternión (X,Y,Z).
+esferaId = p.loadURDF("urdf/ejercicio_opcional_gravedad.urdf", startPosition, startOrientation)
+
+# Simulación manual de la caída libre
+altura = altura_inicial
+
+while (1):
+
+    # Fórmulas MRUA
+    altura = altura + velocidad * dt + 0.5 * (-9.8) * dt ** 2
+    velocidad = velocidad + (-9.8) * dt
     
-print("La esfera ha tocado el suelo.")
-time.sleep(2)
-# p.disconnect()
+    # Evitar que la esfera pase por debajo del suelo
+    if altura <= 0.1:
+        altura = 0
+        velocidad = 0
+        altura = 0.1
+    
+    # Actualizar posición de la esfera
+    p.resetBasePositionAndOrientation(esferaId, [0, 0, altura], [0, 0, 0, 1])
+    
+    # Pequeña pausa para visualizar la simulación en tiempo real
+    time.sleep(dt)
+
+# Desconectar pybullet
+p.disconnect()

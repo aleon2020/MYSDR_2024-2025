@@ -8,9 +8,11 @@ parser = argparse.ArgumentParser(description="URDF viewer example")
 parser.add_argument("--urdf", type=str, required=True, help="Ruta al archivo URDF.")
 args = parser.parse_args()
 
-dt = 0.01
-altura_inicial = 3.0
-velocidad = 0.0
+# Datos iniciales.
+y_o = 3.0
+v = 0.0
+a = -9.8
+t = 0.01
 
 # Conectamos motor con GUI.
 physicsClient = p.connect(p.GUI)
@@ -27,28 +29,28 @@ startOrientation = p.getQuaternionFromEuler([0, 0, 0])
 
 # Cargamos un nuevo objeto, con una posición (x,y,z)
 # y una orientación dada en cuaternión (X,Y,Z).
-esferaId = p.loadURDF("urdf/ejercicio_opcional_gravedad.urdf", startPosition, startOrientation)
+sphereId = p.loadURDF("urdf/ejercicio_opcional_gravedad.urdf", startPosition, startOrientation)
 
 # Simulación manual de la caída libre
-altura = altura_inicial
+y = y_o
 
 while (1):
 
     # Fórmulas MRUA
-    altura = altura + velocidad * dt + 0.5 * (-9.8) * dt ** 2
-    velocidad = velocidad + (-9.8) * dt
+    y = y + v * t + 0.5 * a * t ** 2
+    v = v + a * t
     
-    # Evitar que la esfera pase por debajo del suelo
-    if altura <= 0.1:
-        altura = 0
-        velocidad = 0
-        altura = 0.1
+    # Evita que la esfera pase por debajo del suelo
+    if y <= 0.1:
+        y = 0
+        v = 0
+        y = 0.1
     
     # Actualizar posición de la esfera
-    p.resetBasePositionAndOrientation(esferaId, [0, 0, altura], [0, 0, 0, 1])
+    p.resetBasePositionAndOrientation(sphereId, [0, 0, y], [0, 0, 0, 1])
     
     # Pequeña pausa para visualizar la simulación en tiempo real
-    time.sleep(dt)
+    time.sleep(t)
 
 # Desconectar pybullet
 p.disconnect()

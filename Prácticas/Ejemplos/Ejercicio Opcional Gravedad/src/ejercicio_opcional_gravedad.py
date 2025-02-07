@@ -49,8 +49,6 @@ while (1):
     # Actualizar posición de la esfera
     p.resetBasePositionAndOrientation(sphereId, [0, 0, y], [0, 0, 0, 1])
     
-    # Pequeña pausa para visualizar la simulación en tiempo real
     time.sleep(t)
 
-# Desconectar pybullet
 p.disconnect()

@@ -34,6 +34,12 @@ Directorio ['Diapositivas Teoría'](https://github.com/aleon2020/MYSDR_2024-2025
 
 Directorios ['Prácticas'](https://github.com/aleon2020/MYSDR_2024-2025/tree/main/Pr%C3%A1cticas): Este directorio contiene cada una de las prácticas realizadas en la asignatura.
 
+['Blog de Prácticas'](https://github.com/aleon2020/MYSDR_2024-2025/wiki): Este enlace redirige a la entrada principal del blog de las prácticas realizadas en la asignatura.
+
+A continuación se detallan los enlaces a las entradas de los blogs correspondientes a cada práctica:
+
+[PRÁCTICA 1: DINÁMICAS EN PYBULLET](https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-1:-Din%C3%A1micas-en-PyBullet)
+
 ## 4. Referencias
 
 Ejecuta el siguiente comando en una terminal de los ordenadores de los laboratorios de la universidad para confirmar la asistencia a clase:

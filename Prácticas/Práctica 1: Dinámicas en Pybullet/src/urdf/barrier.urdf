@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<robot name="barrier">
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <!--Definition of the static cylinder as a pole-->   
+
+    <link name="post">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <mass value="100000.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0 0" xyz="0 0 0.4"/>
+            <geometry>
+                <cylinder length="0.8" radius="0.1"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.4"/>
+            <geometry>
+                <cylinder length="0.8" radius="0.1"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <!--Definition of the mobile barrier-->
+
+    <link name="mobile_barrier">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0.3 0.8"/>
+            <mass value="5.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0 0" xyz="0.0 -1 0.2"/>
+            <geometry>
+                <box size="0.1 2.3 0.1"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0.0 -1 0.2"/>
+            <geometry>
+                <box size="0.1 2.3 0.1"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <!--Definition of the joint between the static cylinder as a post and the mobile barrier-->
+
+    <joint name="body_to_arm" type="continuous">
+        <parent link="post"/>
+        <child link="mobile_barrier"/>
+        <dynamics damping="0.0" friction="0.0"/>
+        <origin xyz="0.0 0 0.2"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+</robot>

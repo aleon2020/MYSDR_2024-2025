@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<robot name="ramp">
+
+    <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+    </material>
+
+    <!--Definition of the cubic block that joins the two ramps-->
+
+    <link name="cube_block">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="100000.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0 0" xyz="0 0 0.75"/>
+            <geometry>
+                <box size="4 2 1.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.75"/>
+            <geometry>
+                <box size="4 2 1.5"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <!--Definition of the up ramp-->
+
+    <link name="up_ramp">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.5"/>
+            <mass value="100000.0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0.463 0" xyz="3.447 0.0 0.651"/>
+            <geometry>
+                <box size="3.35 2 0.01"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0.463 0" xyz="3.447 0.0 0.651"/>
+            <geometry>
+                <box size="3.35 2 0.01"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <!--Definition of the down ramp-->    
+
+    <link name="down_ramp">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.5"/>
+            <mass value="100000.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0.463 3.14" xyz="-3.547 0 0.651"/>
+            <geometry>
+                <box size="3.35 2 0.01"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0.463 3.14" xyz="-3.547 0 0.651"/>
+            <geometry>
+                <box size="3.35 2 0.01"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <!--Definition of the joint between the cubic block and the up ramp-->
+
+    <joint name="cube_block_to_up_ramp" type="fixed">
+        <parent link="cube_block"/>
+        <child link="up_ramp"/>
+        <origin xyz="0.05 0 0.1"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!--Definition of the joint between the cubic block and the down ramp-->
+
+    <joint name="cube_block_to_down_ramp" type="fixed">
+        <parent link="cube_block"/>
+        <child link="down_ramp"/>
+        <origin xyz="0.05 0 0.1"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+</robot>

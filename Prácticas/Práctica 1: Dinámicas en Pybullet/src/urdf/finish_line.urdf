@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<robot name="finish_line">
+
+    <material name="green">
+        <color rgba="0 1 0 1"/>
+    </material>
+
+    <!--Definition of the planar structure that defines the end of the path-->
+
+    <link name="finish_line">
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <mass value="100000.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                               iyy="1.0" iyz="0.0" 
+                                         izz="1.0"/>
+        </inertial>
+
+        <visual>        
+            <origin rpy="0 0 0" xyz="0 0 0.005"/>
+            <geometry>
+                <box size="1 3 0.01"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.005"/>
+            <geometry>
+                <box size="1 3 0.01"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+</robot>

@@ -25,15 +25,13 @@ finishlineId = p.loadURDF("urdf/finish_line.urdf", [20, 0, 0], startOrientation)
 
 joints = [2, 3, 4, 5]
 
-speedId = p.addUserDebugParameter("Speed", 0, 20, 0)
-torqueId = p.addUserDebugParameter("Torque", 0, 100, 100)
-
 while (1):
 
     p.stepSimulation()
     time.sleep(1./240.)
-    speed = p.readUserDebugParameter(speedId)
-    torque = p.readUserDebugParameter(torqueId)
+
+    speed = 15
+    torque = 50
 
     p.setJointMotorControlArray(huskyId,
                                 joints,
@@ -41,6 +39,11 @@ while (1):
                                 targetVelocities=[speed, speed, speed, speed],
                                 forces=[torque, torque, torque, torque])
     
+    p.resetDebugVisualizerCamera(cameraDistance=5, 
+                                 cameraYaw=p.getDebugVisualizerCamera()[8], 
+                                 cameraPitch=p.getDebugVisualizerCamera()[9], 
+                                 cameraTargetPosition=p.getBasePositionAndOrientation(huskyId)[0])
+
     if p.getBasePositionAndOrientation(huskyId)[0][0] >= 20:
         break
 

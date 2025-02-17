@@ -39,12 +39,12 @@ while (1):
     # time.sleep(1./240.)
 
     # Scenario 3.1: Assignment of speeds and forces
-    speed = 15
-    torque = 50
+    speed = 11
+    torque = 25
 
     # Scenario 3.2: Assignment of speeds and forces + friction
     # for i in joints:
-    #     p.changeDynamics(huskyId, i, lateralFriction=0.93)
+    #     p.changeDynamics(huskyId, i, lateralFriction=0.93, spinningFriction=0.005, rollingFriction=0.003)
     #     p.changeDynamics(huskyId, i, spinningFriction=0.005)
     #     p.changeDynamics(huskyId, i, rollingFriction=0.003)
 
@@ -77,7 +77,7 @@ while (1):
 p.disconnect()
 
 # All data is saved in a file in CSV format and exits PyBullet
-with open('Fase2.csv', mode = 'w', newline = '') as file:
+with open('Fase3.1.csv', mode = 'w', newline = '') as file:
     writer = csv.writer(file)
     writer.writerow(['tiempo', 'posicion_robot[Y]', 'velocidad_robot[Y]', 'velocidad_ruedas', 'fuerza_ruedas'])
     for i in data_records:

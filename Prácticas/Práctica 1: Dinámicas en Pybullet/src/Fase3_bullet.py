@@ -29,6 +29,7 @@ joints = [2, 3, 4, 5]
 # Set the realtime mode of the simulator
 p.setRealTimeSimulation(1)
 
+# Phase 2: Obtaining metrics
 last_advance = -1
 initial_time = time.time()
 data_records = []
@@ -38,15 +39,15 @@ while (1):
     # p.stepSimulation()
     # time.sleep(1./240.)
 
-    # Scenario 3.1: Assignment of speeds and forces
+    # Phase 3 Scenario 3.1: Assignment of speeds and forces
     speed = 11.25
     torque = 75
 
-    # Scenario 3.2: Assignment of speeds and forces + friction
+    # Phase 3 Scenario 3.2: Assignment of speeds and forces + friction
     for i in joints:
         p.changeDynamics(huskyId, i, lateralFriction=0.93, spinningFriction=0.005, rollingFriction=0.003)
 
-    # Scenario 3.3: Assignment of speeds and forces + friction + Inertia
+    # Phase 3 Scenario 3.3: Assignment of speeds and forces + friction + Inertia
     p.changeDynamics(barrierId, 0, localInertiaDiagonal=[8.816666667, 0.0, 8.816666667])
 
     # Relates movement to the simultaneous activation of several joints
@@ -62,6 +63,7 @@ while (1):
                                  cameraPitch=p.getDebugVisualizerCamera()[9], 
                                  cameraTargetPosition=p.getBasePositionAndOrientation(huskyId)[0])
 
+    # Phase 2: Obtaining metrics
     # Collects and records information every 0.01 meters that the robot advances
     current_advance = p.getBasePositionAndOrientation(huskyId)[0][0]
     if (current_advance != last_advance):
@@ -74,6 +76,7 @@ while (1):
 
 p.disconnect()
 
+# Phase 2: Obtaining metrics
 # All data is saved in a file in CSV format and exits PyBullet
 with open('Fase3.csv', mode = 'w', newline = '') as file:
     writer = csv.writer(file)

@@ -39,17 +39,15 @@ while (1):
     # time.sleep(1./240.)
 
     # Scenario 3.1: Assignment of speeds and forces
-    speed = 11
-    torque = 25
+    speed = 11.25
+    torque = 75
 
     # Scenario 3.2: Assignment of speeds and forces + friction
-    # for i in joints:
-    #     p.changeDynamics(huskyId, i, lateralFriction=0.93, spinningFriction=0.005, rollingFriction=0.003)
-    #     p.changeDynamics(huskyId, i, spinningFriction=0.005)
-    #     p.changeDynamics(huskyId, i, rollingFriction=0.003)
+    for i in joints:
+        p.changeDynamics(huskyId, i, lateralFriction=0.93, spinningFriction=0.005, rollingFriction=0.003)
 
     # Scenario 3.3: Assignment of speeds and forces + friction + Inertia
-    # p.changeDynamics(barrierId, 0, localInertiaDiagonal=[20/3, 0.0, 20/3])
+    p.changeDynamics(barrierId, 0, localInertiaDiagonal=[8.816666667, 0.0, 8.816666667])
 
     # Relates movement to the simultaneous activation of several joints
     p.setJointMotorControlArray(huskyId,
@@ -77,7 +75,7 @@ while (1):
 p.disconnect()
 
 # All data is saved in a file in CSV format and exits PyBullet
-with open('Fase3.1.csv', mode = 'w', newline = '') as file:
+with open('Fase3.csv', mode = 'w', newline = '') as file:
     writer = csv.writer(file)
     writer.writerow(['tiempo', 'posicion_robot[Y]', 'velocidad_robot[Y]', 'velocidad_ruedas', 'fuerza_ruedas'])
     for i in data_records:

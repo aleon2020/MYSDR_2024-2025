@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 
 # Files in CSV format to process
 # file = ['Fase2.csv']
-file = ['Fase3.1.csv']
+# file = ['Fase3.1.csv']
 # file = ['Fase3.2.csv']
 # file = ['Fase3.3.csv']
-# file = ['Fase3.1.csv', 'Fase3.2.csv', 'Fase3.3.csv']  # Fase3.pdf
+file = ['Fase3.1.csv', 'Fase3.2.csv', 'Fase3.3.csv']    # Fase3.pdf
 # file = ['Fase4.csv']                                  # Fase4.pdf
 # file = ['Fase4.csv', 'Fase3.3.csv']                   # Fase3.3-4.pdf
 
@@ -32,10 +32,10 @@ for i in file:
 plt.xlabel('POSICIÓN (METROS)')
 plt.ylabel('VELOCIDAD (METROS / SEGUNDO)')
 # plt.title('FASE 2: OBTENCIÓN DE MÉTRICAS')
-plt.title('ESCENARIO 3.1: ASIGNACIÓN VELOCIDADES Y FUERZAS')
+# plt.title('ESCENARIO 3.1: ASIGNACIÓN VELOCIDADES Y FUERZAS')
 # plt.title('ESCENARIO 3.2: ASIGNACIÓN VELOCIDADES Y FUERZAS + FRICCIÓN')
 # plt.title('ESCENARIO 3.3: ASIGNACIÓN VELOCIDADES Y FUERZAS + FRICCIÓN + INERCIA')
-# plt.title('FASE 3: EVALUACIÓN DE MÉTRICAS')
+plt.title('FASE 3: EVALUACIÓN DE MÉTRICAS')
 # plt.title('FASE 4: CONTROLADOR DINÁMICO DEL ROBOT')
 # plt.title('FASE 4 VS ESCENARIO 3.3')
 

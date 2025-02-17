@@ -41,7 +41,7 @@ while (1):
 
     # Phase 3 Scenario 3.1: Assignment of speeds and forces
     speed = 11.25
-    torque = 75
+    torque = 75  
 
     # Phase 3 Scenario 3.2: Assignment of speeds and forces + friction
     for i in joints:

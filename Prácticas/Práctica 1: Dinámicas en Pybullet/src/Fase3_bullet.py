@@ -78,7 +78,7 @@ p.disconnect()
 
 # Phase 2: Obtaining metrics
 # All data is saved in a file in CSV format and exits PyBullet
-with open('Fase3.csv', mode = 'w', newline = '') as file:
+with open('Fase2.csv', mode = 'w', newline = '') as file:
     writer = csv.writer(file)
     writer.writerow(['tiempo', 'posicion_robot[Y]', 'velocidad_robot[Y]', 'velocidad_ruedas', 'fuerza_ruedas'])
     for i in data_records:

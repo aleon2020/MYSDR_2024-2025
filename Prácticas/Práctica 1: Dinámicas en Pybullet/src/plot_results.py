@@ -8,6 +8,7 @@ file = ['Fase2.csv']
 # file = ['Fase3.2.csv']
 # file = ['Fase3.3.csv']
 # file = ['Fase3.1.csv', 'Fase3.2.csv', 'Fase3.3.csv']
+# file = ['Fase3.1.csv', 'Fase3.2.csv']
 # file = ['Fase4.csv']
 # file = ['Fase4.csv', 'Fase3.3.csv']
 

@@ -54,18 +54,23 @@ while (1):
     p.changeDynamics(barrierId, 0, localInertiaDiagonal=[8.816666667, 0.0, 8.816666667])
 
     # Phase 4: Dynamic Robot Controller
-    # if p.getBasePositionAndOrientation(huskyId)[0][2] < -0.00195 and controller == 0:
-    #     controller = 1
-    # if controller == 1:
-    #     if p.getBasePositionAndOrientation(huskyId)[1][0] > 0.08:
-    #         speed = 24
-    #         torque = 44
-    #     elif p.getBasePositionAndOrientation(huskyId)[1][0] < -0.26:
-    #         speed = 0
-    #         torque = 0
-    #     else:
-    #         speed = 11.25
-    #         torque = 30
+    # if p.getBasePositionAndOrientation(huskyId)[1][0] < 1:
+    #     speed = 11.25
+    #     torque = 100
+    # elif p.getBasePositionAndOrientation(huskyId)[1][0] > -1:
+    #     speed = 11.25
+    #     torque = 100
+    # elif p.getBasePositionAndOrientation(huskyId)[1][0] < -1:
+    #     speed = 11.25
+    #     torque = 100
+    # elif p.getBasePositionAndOrientation(huskyId)[1][0] > 1:
+    #     speed = 11.25
+    #     torque = 100
+    # else:
+    #     speed = 11.25
+    #     torque = 75
+
+    # print(p.getBasePositionAndOrientation(huskyId)[1][0])
 
     # Relates movement to the simultaneous activation of several joints
     p.setJointMotorControlArray(huskyId,

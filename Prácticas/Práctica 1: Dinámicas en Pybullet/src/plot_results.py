@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 # file = ['Fase3.3.csv']
 # file = ['Fase3.1.csv', 'Fase3.2.csv', 'Fase3.3.csv']
 # file = ['Fase3.1.csv', 'Fase3.2.csv']
-file = ['Fase4.csv']
-# file = ['Fase4.csv', 'Fase3.3.csv']
+# file = ['Fase4.csv']
+file = ['Fase4.csv', 'Fase3.3.csv']
 
 # Size of the figure to display the graph
 plt.figure(figsize=(8, 4))
@@ -43,8 +43,8 @@ plt.ylabel('VELOCIDAD (METROS / SEGUNDO)')
 # plt.title('FASE 3 ESCENARIO 3.2: ASIGNACIÓN VELOCIDADES Y FUERZAS + FRICCIÓN')
 # plt.title('FASE 3 ESCENARIO 3.3: ASIGNACIÓN VELOCIDADES Y FUERZAS + FRICCIÓN + INERCIA')
 # plt.title('FASE 3: EVALUACIÓN DE MÉTRICAS')
-plt.title('FASE 4: CONTROLADOR DINÁMICO DEL ROBOT')
-# plt.title('FASE 4 VS ESCENARIO 3.3')
+# plt.title('FASE 4: CONTROLADOR DINÁMICO DEL ROBOT')
+plt.title('FASE 4 VS ESCENARIO 3.3')
 
 # Adjustment / Settings of the axes and grid
 plt.axis('auto')

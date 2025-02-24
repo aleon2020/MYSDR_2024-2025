@@ -34,9 +34,6 @@ last_advance = -1
 initial_time = time.time()
 data_records = []
 
-# Phase 4: Dynamic Robot Controller
-# controller = 0
-
 while (1):
 
     # p.stepSimulation()
@@ -54,23 +51,15 @@ while (1):
     p.changeDynamics(barrierId, 0, localInertiaDiagonal=[8.816666667, 0.0, 8.816666667])
 
     # Phase 4: Dynamic Robot Controller
-    # if p.getBasePositionAndOrientation(huskyId)[1][0] < 1:
-    #     speed = 11.25
-    #     torque = 100
-    # elif p.getBasePositionAndOrientation(huskyId)[1][0] > -1:
-    #     speed = 11.25
-    #     torque = 100
-    # elif p.getBasePositionAndOrientation(huskyId)[1][0] < -1:
-    #     speed = 11.25
-    #     torque = 100
-    # elif p.getBasePositionAndOrientation(huskyId)[1][0] > 1:
-    #     speed = 11.25
-    #     torque = 100
-    # else:
-    #     speed = 11.25
-    #     torque = 75
-
-    # print(p.getBasePositionAndOrientation(huskyId)[1][0])
+    if (p.getBasePositionAndOrientation(huskyId)[0][2] - startOrientation[0]) > 0.05:
+        speed = 13
+        torque = 50
+    elif (p.getBasePositionAndOrientation(huskyId)[0][2] - startOrientation[0]) < -0.25:
+        speed = 0
+        torque = 0
+    else:
+        speed = 11.25
+        torque = 75
 
     # Relates movement to the simultaneous activation of several joints
     p.setJointMotorControlArray(huskyId,

@@ -1,7 +1,6 @@
 # Imports from libraries
 import numpy as np
 import matplotlib.pyplot as plt
-# import math
 
 # Files in CSV format to process
 # file = ['Fase2.csv']

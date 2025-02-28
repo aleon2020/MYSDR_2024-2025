@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # file = ['Fase3.1.csv', 'Fase3.2.csv', 'Fase3.3.csv']
 # file = ['Fase3.1.csv', 'Fase3.2.csv']
 # file = ['Fase4.csv']
-file = ['Fase3.3.csv', 'Fase4.csv']
+file = ['Fase3.csv', 'Fase4.csv']
 
 # Size of the figure to display the graph
 plt.figure(figsize=(8, 4))

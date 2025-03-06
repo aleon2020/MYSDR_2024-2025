@@ -71,6 +71,13 @@ while (1):
 
     # Calculamos los angulos/posiciones de los joints dependiendo del punto objetivo 'pos_target'
 
+    # Devuelve una lista de posición de joints para cada grado de libertad, los joints de tipo
+    # 'fixed' son omitidos y la cinemática inversa solo es calculada sobre los primeros N joints
+    # definidos por robotEndEffectorIndex.
+    # Devuelve los ángulos / posición de cada joint para alcanzar pos_target.
+    # - robotId: Id del robot.
+    # - robotEndEffectorIndex: Último índice de articulación antes del EndEffector.
+    # - pos_target: Posición objetivo en coordenadas cartesianas.
     jointPoses = p.calculateInverseKinematics(robotId, robotEndEffectorIndex, pos_target)
 
     for i in range(0,robotEndEffectorIndex):

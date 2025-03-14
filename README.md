@@ -40,6 +40,8 @@ A continuación se detallan los enlaces a las entradas de los blogs correspondie
 
 [PRÁCTICA 1: DINÁMICAS EN PYBULLET](https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-1:-Din%C3%A1micas-en-PyBullet)
 
+[PRÁCTICA 2: DISEÑO 3D DE UN ROBOT EN BLENDER](https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-2:-Dise%C3%B1o-3D-de-un-Robot-en-Blender)
+
 ## 4. Referencias
 
 Ejecuta el siguiente comando en una terminal de los ordenadores de los laboratorios de la universidad para confirmar la asistencia a clase:

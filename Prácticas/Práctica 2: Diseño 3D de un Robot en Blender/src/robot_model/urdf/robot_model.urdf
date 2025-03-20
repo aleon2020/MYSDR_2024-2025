@@ -1,0 +1,225 @@
+<robot name="robot_model" version="1.0">
+  <joint name="arm_1_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.65000"/>
+    <parent link="arm_column_link"/>
+    <child link="arm_1_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_2_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 0.20000"/>
+    <parent link="arm_1_link"/>
+    <child link="arm_2_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_base_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.08925 0.52413"/>
+    <parent link="chasis_link"/>
+    <child link="arm_base_link"/>
+  </joint>
+  <joint name="arm_column_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.85000"/>
+    <parent link="arm_base_link"/>
+    <child link="arm_column_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="arm_gripper_link_joint" type="prismatic">
+    <limit lower="-0.20000" upper="-1.80000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -1.00000 -0.07053"/>
+    <parent link="arm_2_link"/>
+    <child link="arm_gripper_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="gripper_left_link_joint" type="prismatic">
+    <limit lower="0.00000" upper="-0.25000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 -1.57080 0.00000" xyz="0.32000 -0.00000 -2.53589"/>
+    <parent link="arm_gripper_link"/>
+    <child link="gripper_left_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="gripper_right_link_joint" type="prismatic">
+    <limit lower="0.00000" upper="0.25000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="-0.32000 -0.00000 -2.53589"/>
+    <parent link="arm_gripper_link"/>
+    <child link="gripper_right_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="subjection_down_left_wheel_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.53571 0.91075 -0.81158"/>
+    <parent link="chasis_link"/>
+    <child link="subjection_down_left_wheel_link"/>
+  </joint>
+  <joint name="subjection_down_right_wheel_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.53571 0.91075 -0.81158"/>
+    <parent link="chasis_link"/>
+    <child link="subjection_down_right_wheel_link"/>
+  </joint>
+  <joint name="subjection_up_left_wheel_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.53571 -1.08925 -0.81158"/>
+    <parent link="chasis_link"/>
+    <child link="subjection_up_left_wheel_link"/>
+  </joint>
+  <joint name="subjection_up_right_wheel_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.53571 -1.08925 -0.81158"/>
+    <parent link="chasis_link"/>
+    <child link="subjection_up_right_wheel_link"/>
+  </joint>
+  <joint name="wheel_down_left_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="0.26429 0.00000 -0.06429"/>
+    <parent link="subjection_down_left_wheel_link"/>
+    <child link="wheel_down_left_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="wheel_down_right_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="-0.26429 0.00000 -0.06429"/>
+    <parent link="subjection_down_right_wheel_link"/>
+    <child link="wheel_down_right_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="wheel_up_left_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="0.26429 0.00000 -0.06429"/>
+    <parent link="subjection_up_left_wheel_link"/>
+    <child link="wheel_up_left_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="wheel_up_right_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="-0.26429 0.00000 -0.06429"/>
+    <parent link="subjection_up_right_wheel_link"/>
+    <child link="wheel_up_right_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <link name="arm_1_link">
+    <visual name="arm_1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.015.dae" scale="0.20000 0.20000 0.10000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_2_link">
+    <visual name="arm_2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.017.dae" scale="0.20000 0.20000 0.10000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_base_link">
+    <visual name="arm_base">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_column_link">
+    <visual name="arm_column">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <cylinder radius="0.15000" length="1.50000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="arm_gripper_link">
+    <visual name="arm_gripper">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cube.007.dae" scale="0.35000 0.15000 0.02500"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="chasis_link">
+    <visual name="chasis">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cube.003.dae" scale="0.05000 1.00000 0.35000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="gripper_left_link">
+    <visual name="gripper_left">
+      <origin rpy="3.14159 0.00000 3.14159" xyz="1.05643 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="gripper_right_link">
+    <visual name="gripper_right">
+      <origin rpy="0.00000 -0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="subjection_down_left_wheel_link">
+    <visual name="subjection_down_left_wheel">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="subjection_down_right_wheel_link">
+    <visual name="subjection_down_right_wheel">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="subjection_up_left_wheel_link">
+    <visual name="subjection_up_left_wheel">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="subjection_up_right_wheel_link">
+    <visual name="subjection_up_right_wheel">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="wheel_down_left_link">
+    <visual name="wheel_down_left">
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="wheel_down_right_link">
+    <visual name="wheel_down_right">
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="wheel_up_left_link">
+    <visual name="wheel_up_left">
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="wheel_up_right_link">
+    <visual name="wheel_up_right">
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

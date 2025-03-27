@@ -10,7 +10,7 @@ planeId = p.loadURDF("plane.urdf")
 
 startPos = [0, 0, 1.2]
 startOrientation = p.getQuaternionFromEuler([0, 0, 3.14])
-robotId = p.loadURDF("robot_model/urdf/robot_model.urdf",startPos, startOrientation) 
+robotId = p.loadURDF("robot_model/urdf/robot_model.urdf",startPos, startOrientation)
 
 startPos = [0, 4, 0]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
@@ -55,33 +55,7 @@ p.changeDynamics(robotId, arm_gripper_joint, jointLowerLimit=-1.25, jointUpperLi
 for j in range (numJoints):
     print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
 
-# input("Press enter to start motion")
 while (1):
 
-    """
-    speed_left_gripper = p.readUserDebugParameter(gripper_left_movement)
-    speed_right_gripper = p.readUserDebugParameter(gripper_right_movement)
-    speed_arm_gripper = p.readUserDebugParameter(arm_gripper_movement)
-    """
-    
-    # p.setJointMotorControlArray(robotId, wheels_joints, p.VELOCITY_CONTROL, targetVelocities=[11] * 4)
-    
-    """
-    p.setJointMotorControlArray(robotId,
-                                gripper_left_joint,
-                                p.POSITION_CONTROL,
-                                targetVelocities=[speed_left_gripper])
-                                
-    p.setJointMotorControlArray(robotId,
-                                gripper_right_joint,
-                                p.POSITION_CONTROL,
-                                targetVelocities=[speed_right_gripper])
-
-    p.setJointMotorControlArray(robotId,
-                                arm_gripper_joint,
-                                p.POSITION_CONTROL,
-                                targetVelocities= [speed_arm_gripper])
-    """
-    
     p.stepSimulation()
     time.sleep(0.01)

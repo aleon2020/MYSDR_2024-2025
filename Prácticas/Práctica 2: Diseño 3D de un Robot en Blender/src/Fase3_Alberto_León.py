@@ -18,11 +18,19 @@ robotId = p.loadURDF("robot_model/urdf/robot_model.urdf",startPos, startOrientat
 numJoints = p.getNumJoints(robotId)
 print("NumJoints: " + str(numJoints))
 
-joints = [8, 10, 12, 14]
+wheels_joints = [8, 10, 12, 14]
+gripper_left_joint = 5
+gripper_right_joint = 6
+arm_gripper_joint = [4]
+
+
+p.changeDynamics(robotId, gripper_left_joint, jointLowerLimit=0, jointUpperLimit=-0.25)
+p.changeDynamics(robotId, gripper_right_joint, jointLowerLimit=0.25, jointUpperLimit=0.5)
+
 for j in range (numJoints):
     print("%d - %s" % (p.getJointInfo(robotId,j)[0], p.getJointInfo(robotId,j)[1].decode("utf-8")))
     print("Link - %s" % (p.getJointInfo(robotId,j)[12]))
 
 input("Press enter to start motion")
 while True:
-    p.setJointMotorControlArray(robotId, joints, p.VELOCITY_CONTROL, targetVelocities=[11] * 4)
+    p.setJointMotorControlArray(robotId, wheels_joints, p.VELOCITY_CONTROL, targetVelocities=[11] * 4)

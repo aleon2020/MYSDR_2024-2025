@@ -1,1 +1,29 @@
 PRESENTACIÓN VÍDEO EXPLICATIVO PRÁCTICA 2
+
+Hola, soy Alberto León, y en este vídeo voy a explicar mi implementación del robot modelado en Blender y de la Fase 3 de la Práctica 2 de la asignatura de Modelado y Simulación de Robots.
+
+Antes de comenzar a explicar la Práctica 3, explicaré mi implementación del robot modelado en Blender.
+
+Como se puede observar, el robot está compuesto por 4 ruedas, cada una con su respectiva sujección al chasis para que se asimile lo máximo posible a un robot de tipo Rover. 
+
+En la parte superior trasera del chasis se encuentra el depósito, el cual está formado por 4 paredes entre las cuales se depositará el cubo.
+
+Y por último, ubicado en la parte superior delantera se encuentra el brazo, el cual sigue el mismo modelo cinemático que un robot manipulador SCARA. 
+
+Como se puede observar en la imagen, el brazo está compuesto por una base cilíndrica fija, un cilindro vertical más alto y delgado colocado encima del cilindro base, dos eslabones horizontales colocados uno encima del otro, en el que el extremo final del primer eslabón marca el extremo inicial del segundo eslabón. Al final del segundo eslabón, se encuentra una articulación prismática encargada de subir y bajar el cubo en cada momento, y por último el gripper, compuesto por dos pinzas, cada una situada en un lado del extremo final de la articulación prismática.
+
+A continuación se muestra una secuencia de imágenes en la que se puede observar como:
+
+SECUENCIA DE IMÁGENES POWER POINT
+
+Visto esto, se muestra una imagen del modelo del robot en Blender, en el que se pueden ver las cuatro ruedas de tipo revolute, cada uno de las paredes de la caja y las sujecciones de cada rueda al chasis, todas ellas de tipo fixed, y el brazo, que está enteramente compuesto por joints de tipo continuous, exceptuando la base cilíndrica inicial, que es de tipo fixed, y el gripper y la articulación que lo sostiene, los cuales son de tipo prismatic.
+
+A continuación se muestra un vídeo del proceso de pick and place que realiza el robot desde PyBullet:
+
+VIDEO EXPLICACIÓN SIMULACIÓN PYBULLET (GIF)
+
+Y Por último, se va a explicar el plot obtenido en la Fase 3.
+
+En el se diferencia bastante bien el estado en el que se encuentra el robot, ya que en primer lugar, el robot avanza hacia donde está situado el cubo, después baja su articulación prismática hasta que coincida con el cubo. Una vez en esa posición, el gripper se cierra para poder agarrar el cubo y sube su articulación prismática hasta llegar a la altura deseada de forma que el cubo no se choque con la caja. Después, el brazo gira sus dos eslabones hasta que el gripper se sitúe justo encima de la caja, en la que el gripper se abrirá y depositará el cubo en la caja. Y por último, con el cubo ya metido en la caja, los dos eslabones horizontales del brazo regresarán a la posición en la que se encontraban inicialmente y la articulación prismática regresará a la misma altura a la que se encontraba inicialmente.
+
+Y con esto sería todo, muchas gracias.

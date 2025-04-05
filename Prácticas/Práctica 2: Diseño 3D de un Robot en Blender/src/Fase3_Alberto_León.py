@@ -121,30 +121,18 @@ planeID = p.loadURDF("plane.urdf")
 
 # We load new objects, with a position (x,y,z)
 # and an orientation given in quaternion (C,X,Y,Z)
-robotId = p.loadURDF("./urdf/urdf/robot_p2.urdf", [0, -3, 2])
-cubeId = p.loadURDF("./urdf/cube.urdf", [0, 4, 0.5])
-
-"""
-PARÁMETROS DE LA NUEVA VERSIÓN
 startOrientation = p.getQuaternionFromEuler([0, 0, 3.14])
-robotId = p.loadURDF("robot_model/urdf/robot_model.urdf", [0, 0, 1.2], startOrientation)
-
+robotId = p.loadURDF("robot_model/urdf/robot_model.urdf", [0, -3, 1.2], startOrientation)
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
 cubeId = p.loadURDF("robot_model/cube.urdf", [0, 4, 0], startOrientation)
 
-wheels_joints = [8, 10, 12, 14]
 gripper_left_joint = 5
 gripper_right_joint = 6
 arm_gripper_joint = 4
 
-# gripper_left_movement = p.addUserDebugParameter("gripper_left_movement", 0, 5, 0)
-# gripper_right_movement = p.addUserDebugParameter("gripper_right_movement", 0, 5, 0)
-# arm_gripper_movement = p.addUserDebugParameter("arm_gripper_movement", -30, 25, 0)
-
 p.changeDynamics(robotId, gripper_left_joint, jointLowerLimit=0, jointUpperLimit=0.25)
 p.changeDynamics(robotId, gripper_right_joint, jointLowerLimit=0, jointUpperLimit=0.25)
 p.changeDynamics(robotId, arm_gripper_joint, jointLowerLimit=-1.25, jointUpperLimit=1)
-"""
 
 # Constants
 data_saved = False
@@ -155,11 +143,9 @@ arm_movement_parameters = [0, 0]
 arm_force_parameters = []
 state = STARTING_POSITION
 
-for i in range(10):
-	p.enableJointForceTorqueSensor(robotId, i, enableSensor=True)
-	
 for i in range (p.getNumJoints(robotId)):
     print("%d - %s" % (p.getJointInfo(robotId, i)[0], p.getJointInfo(robotId, i)[1].decode("utf-8")))
+    p.enableJointForceTorqueSensor(robotId, i, enableSensor=True)
 
 with open('Fase3_Alberto_León.csv', mode='w', newline='') as file:
 
@@ -169,24 +155,24 @@ with open('Fase3_Alberto_León.csv', mode='w', newline='') as file:
     while(1):
         
         # Adjust the camera view in PyBullet to follow the Husky robot
-        p.resetDebugVisualizerCamera(cameraDistance=5, 
-                                     cameraYaw=p.getDebugVisualizerCamera()[8], 
-                                     cameraPitch=p.getDebugVisualizerCamera()[9], 
+        p.resetDebugVisualizerCamera(cameraDistance=7.5, 
+                                     cameraYaw=135, 
+                                     cameraPitch=p.getDebugVisualizerCamera()[9],
                                      cameraTargetPosition=p.getBasePositionAndOrientation(robotId)[0])
 
         if state == STARTING_POSITION:
             p.setJointMotorControlArray(bodyIndex=robotId,
-                                        jointIndices=[10, 13, 16, 19],
+                                        jointIndices=[12, 14, 16, 18],
                                         controlMode=p.VELOCITY_CONTROL,
-                                        targetVelocities=[-2, -2, -2, -2],
+                                        targetVelocities=[5, 5, 5, 5],
                                         forces=[3, 3, 3, 3])
-            if (p.getLinkState(robotId, 10)[0][1] > -0.5):
+            if (p.getLinkState(robotId, 12)[0][1] > -1.1):
                 p.setJointMotorControlArray(bodyIndex=robotId,
-                                            jointIndices=[10, 13, 16, 19],
+                                            jointIndices=[12, 14, 16, 18],
                                             controlMode=p.VELOCITY_CONTROL,
                                             targetVelocities=[0, 0, 0, 0],
                                             forces=[0, 0, 0, 0])
-                if (p.getLinkState(robotId, 10)[0][1] > 1.3):
+                if (p.getLinkState(robotId, 12)[0][1] > 0.05):
                     data_saved = True
                     state = APPROXIMATION_TO_THE_CUBE
 
@@ -199,16 +185,16 @@ with open('Fase3_Alberto_León.csv', mode='w', newline='') as file:
         elif state == MOVE_ARM_DOWN:
             arm_movement_parameters = set_arm_pose([0, 4, 0], OPEN_GRIPPER, 500, 0.01, 2)
             arm_force_parameters.append(arm_movement_parameters[1])
-            if (p.getLinkState(robotId, 4)[0][2] < 0.6):
-                state = PICK_UP_CUBE
+            # if (p.getLinkState(robotId, 4)[0][2] < 0.6):
+            state = PICK_UP_CUBE
 
         elif state == PICK_UP_CUBE:
             set_gripper_state(CLOSE_GRIPPER)
-            if ((p.getLinkState(robotId, 5)[0][0] > 0.26) and (p.getLinkState(robotId, 6)[0][0] < -0.26)):
+            if ((p.getLinkState(robotId, 5)[0][0] > 0.05) and (p.getLinkState(robotId, 6)[0][0] < -0.05)):
                 state = MOVE_ARM_UP
 
         elif state == MOVE_ARM_UP:
-            arm_movement_parameters = set_arm_pose([0, 2, 3.7], CLOSE_GRIPPER, 450, 0.01, 1.5)
+            arm_movement_parameters = set_arm_pose([0, 4, 2.7], CLOSE_GRIPPER, 450, 0.01, 1.5)
             arm_force_parameters.append(arm_movement_parameters[1])
             if (p.getLinkState(robotId, 4)[0][2] > 3):
                 state = ROTATE_ARM

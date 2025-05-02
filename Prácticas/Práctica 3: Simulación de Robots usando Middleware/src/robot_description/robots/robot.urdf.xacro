@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- includes -->
+    <xacro:include filename="$(find robot_description)/urdf/base/robot_base.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/wheels/rover_wheel.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/arm/scara.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/arm/gripper.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/ros2_control.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/utils/utils.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/sensors/camera.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/sensors/imu_sensor.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/sensors/sensors.urdf.xacro"/>
+
+    <!-- properties -->
+    <xacro:property name="PI" value="3.1415926535897931"/>
+    <xacro:property name="wheel_offset_x" value="0.95"/>
+    <xacro:property name="wheel_offset_y" value="0.95"/>
+    <xacro:property name="wheel_offset_z" value="-0.38"/>
+    <xacro:property name="arm_offset_x" value="0.0"/>
+    <xacro:property name="arm_offset_y" value="0.82"/>
+    <xacro:property name="arm_offset_z" value="0.69"/>
+
+    <!-- arguments -->
+    <xacro:arg name="robot_ns" default=""/>
+    <xacro:arg name="prefix" default=""/>
+
+    <!-- robot parts -->
+    <xacro:utils/>
+
+    <!-- base -->
+    <xacro:robot_base/>
+
+    <!-- wheels -->
+    <xacro:rover_wheel parent="Base_link"/>
+
+    <!-- arm -->
+    <xacro:scara parent="Base_link"/>
+    <xacro:gripper parent="arm_gripper_link"/>
+
+    <!-- sensors -->
+    <xacro:camera parent="Base_link"/>
+    <xacro:sensors parent="arm_gripper_link"/>
+    <xacro:imu_sensor parent="arm_gripper_link"/>
+
+    <!-- gazebo ROS control plugins -->
+    <xacro:include filename="$(find robot_description)/urdf/ros2_control.urdf.xacro"/>
+    <xacro:arg name="config_controllers" default="$(find robot_description)/config/rover_controllers.yaml"/>
+    <xacro:arg name="update_rate" default="20"/>
+    <xacro:ros2_control/>
+   
+</robot>

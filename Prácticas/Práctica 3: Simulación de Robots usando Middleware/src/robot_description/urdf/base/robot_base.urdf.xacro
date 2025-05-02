@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="robot_base" >
+
+    <joint name="Base_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.00000"/>
+      <parent link="base_footprint"/>
+      <child link="Base_link"/>
+    </joint>
+
+    <joint name="box_down_side_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 1.57080" xyz="0.00000 1.86075 0.77413"/>
+      <parent link="Base_link"/>
+      <child link="box_down_side_link"/>
+    </joint>
+
+    <joint name="box_left_side_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.45000 0.91075 0.77413"/>
+      <parent link="Base_link"/>
+      <child link="box_left_side_link"/>
+    </joint>
+
+    <joint name="box_right_side_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.45000 0.91075 0.77413"/>
+      <parent link="Base_link"/>
+      <child link="box_right_side_link"/>
+    </joint>
+
+    <joint name="box_up_side_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 1.57080" xyz="0.00000 -0.03925 0.77413"/>
+      <parent link="Base_link"/>
+      <child link="box_up_side_link"/>
+    </joint>
+
+    <link name="Base_link">
+      <collision name="Base_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.09000 -0.07000"/>
+        <geometry>
+          <box size="1.00000 4.00000 1.00000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="182.69966" ixy="0.00000" ixz="0.00000" iyy="44.38927" iyz="-36.14004" izz="154.63375"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.29214 0.24832"/>
+        <mass value="100.00000"/>
+      </inertial>
+      <visual name="base">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.003.dae" scale="0.05000 1.00000 0.35000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="box_down_side_link">
+      <collision name="box_down_side_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.80000 0.70000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.41667" ixy="0.00000" ixz="0.00000" iyy="0.94167" iyz="0.00000" izz="0.54167"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="box_down_side">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <box size="0.10000 0.80000 0.70000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="box_left_side_link">
+      <collision name="box_left_side_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 2.00000 0.70000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="3.74167" ixy="0.00000" ixz="0.00000" iyy="0.41667" iyz="0.00000" izz="3.34167"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="box_left_side">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <box size="0.10000 2.00000 0.70000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="box_right_side_link">
+      <collision name="box_right_side_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 2.00000 0.70000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="3.74167" ixy="0.00000" ixz="0.00000" iyy="0.41667" iyz="0.00000" izz="3.34167"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="box_right_side">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <box size="0.10000 2.00000 0.70000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="box_up_side_link">
+      <collision name="box_up_side_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.80000 0.70000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.41667" ixy="0.00000" ixz="0.00000" iyy="0.94167" iyz="0.00000" izz="0.54167"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="box_up_side">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <box size="0.10000 0.80000 0.70000"/>
+        </geometry>
+      </visual>
+    </link>
+    
+    <link name="base_footprint"/>
+
+  </xacro:macro>
+</robot>

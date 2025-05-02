@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="rover_wheel"  params="parent">
+
+    <joint name="subjection_down_left_wheel_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.53571 0.91075 -0.81158"/>
+      <parent link="Base_link"/>
+      <child link="subjection_down_left_wheel_link"/>
+    </joint>
+
+    <joint name="subjection_down_right_wheel_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.53571 0.91075 -0.81158"/>
+      <parent link="Base_link"/>
+      <child link="subjection_down_right_wheel_link"/>
+    </joint>
+
+    <joint name="subjection_up_left_wheel_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.53571 -1.08925 -0.81158"/>
+      <parent link="Base_link"/>
+      <child link="subjection_up_left_wheel_link"/>
+    </joint>
+
+    <joint name="subjection_up_right_wheel_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.53571 -1.08925 -0.81158"/>
+      <parent link="Base_link"/>
+      <child link="subjection_up_right_wheel_link"/>
+    </joint>
+
+    <joint name="wheel_down_left_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="0.26429 0.00000 -0.06429"/>
+      <parent link="subjection_down_left_wheel_link"/>
+      <child link="wheel_down_left_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="wheel_down_right_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="-0.26429 0.00000 -0.06429"/>
+      <parent link="subjection_down_right_wheel_link"/>
+      <child link="wheel_down_right_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="wheel_up_left_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="0.26429 0.00000 -0.06429"/>
+      <parent link="subjection_up_left_wheel_link"/>
+      <child link="wheel_up_left_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="wheel_up_right_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="-0.26429 0.00000 -0.06429"/>
+      <parent link="subjection_up_right_wheel_link"/>
+      <child link="wheel_up_right_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+
+    <link name="subjection_down_left_wheel_link">
+      <collision name="subjection_down_left_wheel_collision">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+        <!--
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.000000</mu>
+              <mu2>1.000000</mu2>
+              <fdir1>0.000000 0.000000 1.000000</fdir1>
+              <slip1>0.500000</slip1>
+              <slip2>0.500000</slip2>
+            </ode>
+          </friction>
+        </surface>
+        -->
+      </collision>
+      <inertial>
+        <inertia ixx="0.09178" ixy="0.00000" ixz="0.05238" iyy="0.21726" iyz="0.00000" izz="0.13657"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="subjection_down_left_wheel">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="subjection_down_right_wheel_link">
+      <collision name="subjection_down_right_wheel_collision">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.09178" ixy="0.00000" ixz="-0.05238" iyy="0.21726" iyz="0.00000" izz="0.13657"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="subjection_down_right_wheel">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="subjection_up_left_wheel_link">
+      <collision name="subjection_up_left_wheel_collision">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.09178" ixy="0.00000" ixz="0.05238" iyy="0.21726" iyz="0.00000" izz="0.13657"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="subjection_up_left_wheel">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="subjection_up_right_wheel_link">
+      <collision name="subjection_up_right_wheel_collision">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.09178" ixy="0.00000" ixz="-0.05238" iyy="0.21726" iyz="0.00000" izz="0.13657"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="subjection_up_right_wheel">
+        <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="wheel_down_left_link">
+      <collision name="wheel_down_left_collision">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.28017" ixy="0.00000" ixz="0.00000" iyy="0.16408" iyz="0.00000" izz="0.15377"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="wheel_down_left">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="wheel_down_right_link">
+      <collision name="wheel_down_right_collision">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.28017" ixy="0.00000" ixz="0.00000" iyy="0.16408" iyz="0.00000" izz="0.15377"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="wheel_down_right">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="wheel_up_left_link">
+      <collision name="wheel_up_left_collision">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.28017" ixy="0.00000" ixz="0.00000" iyy="0.16408" iyz="0.00000" izz="0.15377"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="wheel_up_left">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+    
+    <link name="wheel_up_right_link">
+      <collision name="wheel_up_right_collision">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.28017" ixy="0.00000" ixz="0.00000" iyy="0.16408" iyz="0.00000" izz="0.15377"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="wheel_up_right">
+        <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="black.007"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <!--Transmission is important to link the joints ant the controller (see config/rover_controller.yaml)-->
+    <!--
+    <transmission name="${prefix}_wheel_joint_link">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}wheel_joint_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}wheel_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <gazebo reference="${prefix}wheel_link">
+      <mu1>5</mu1>
+      <mu2>5</mu2>
+      <kp>2.75e6</kp>
+      <kd>8.25e1</kd>
+      <fdir1>0 0 0</fdir1>
+      <maxContacts>4</maxContacts>
+    </gazebo>
+    -->
+
+  </xacro:macro>
+</robot>

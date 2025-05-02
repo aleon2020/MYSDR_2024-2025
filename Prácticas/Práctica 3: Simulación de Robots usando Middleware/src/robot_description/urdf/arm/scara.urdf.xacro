@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="scara" params="parent" >
+
+    <joint name="arm_1_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.65000"/>
+      <parent link="arm_column_link"/>
+      <child link="arm_1_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="arm_2_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 0.20000"/>
+      <parent link="arm_1_link"/>
+      <child link="arm_2_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="arm_base_link_joint" type="fixed">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.08925 0.52413"/>
+      <parent link="Base_link"/>
+      <child link="arm_base_link"/>
+    </joint>
+
+    <joint name="arm_column_link_joint" type="continuous">
+      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.85000"/>
+      <parent link="arm_base_link"/>
+      <child link="arm_column_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="arm_gripper_link_joint" type="prismatic">
+      <limit lower="-1.25000" upper="1.00000" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 -0.07053"/>
+      <parent link="arm_2_link"/>
+      <child link="arm_gripper_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <link name="arm_1_link">
+      <collision name="arm_1_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.015.dae" scale="0.20000 0.20000 0.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.70318" ixy="0.00000" ixz="0.00000" iyy="0.07043" iyz="0.00000" izz="0.74238"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <mass value="5.00000"/>
+      </inertial>
+      <visual name="arm_1">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.015.dae" scale="0.20000 0.20000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="arm_2_link">
+      <collision name="arm_2_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.017.dae" scale="0.20000 0.20000 0.10000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.70318" ixy="0.00000" ixz="0.00000" iyy="0.07043" iyz="0.00000" izz="0.74238"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <mass value="5.00000"/>
+      </inertial>
+      <visual name="arm_2">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.50000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.017.dae" scale="0.20000 0.20000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="arm_base_link">
+      <collision name="arm_base_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <cylinder radius="0.30000" length="0.20000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.12917" ixy="0.00000" ixz="0.00000" iyy="0.12917" iyz="0.00000" izz="0.22500"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="5.00000"/>
+      </inertial>
+      <visual name="arm_base">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <cylinder radius="0.30000" length="0.20000"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="arm_column_link">
+      <collision name="arm_column_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <cylinder radius="0.15000" length="1.50000"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="1.93125" ixy="0.00000" ixz="0.00000" iyy="1.93125" iyz="0.00000" izz="0.11250"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="arm_column">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <cylinder radius="0.15000" length="1.50000"/>
+        </geometry>
+      </visual>
+    </link>
+    
+    <link name="arm_gripper_link">
+      <collision name="arm_gripper_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00003"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.007.dae" scale="0.35000 0.15000 0.02500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="6.42247" ixy="0.00000" ixz="0.00000" iyy="6.52276" iyz="0.00000" izz="0.20346"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.05646"/>
+        <mass value="10.00000"/>
+      </inertial>
+      <visual name="arm_gripper">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.007.dae" scale="0.35000 0.15000 0.02500"/>
+        </geometry>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

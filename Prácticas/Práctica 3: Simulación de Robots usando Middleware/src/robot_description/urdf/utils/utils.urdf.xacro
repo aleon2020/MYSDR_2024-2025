@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="utils" >
+
+    <material name="black.007">
+      <color rgba="0.00000 0.00000 0.00000 1.00000"/>
+    </material>
+
+    <material name="red.001">
+      <color rgba="1.00000 0.00000 0.00000 1.00000"/>
+    </material>
+    
+    <material name="yellow.001">
+      <color rgba="1.00000 1.00000 0.00000 1.00000"/>
+    </material>
+
+  </xacro:macro>
+</robot>

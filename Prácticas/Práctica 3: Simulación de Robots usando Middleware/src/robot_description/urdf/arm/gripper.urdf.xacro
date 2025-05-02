@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot name="robot_model" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="gripper"  params="parent" >
+  
+    <joint name="gripper_left_link_joint" type="prismatic">
+      <limit lower="0.00000" upper="0.15000" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 -1.57080 0.00000" xyz="0.32000 0.00000 -2.53589"/>
+      <parent link="${parent}"/>
+      <child link="gripper_left_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <joint name="gripper_right_link_joint" type="prismatic">
+      <limit lower="0.00000" upper="0.15000" effort="0.00000" velocity="0.00000"/>
+      <origin rpy="0.00000 1.57080 0.00000" xyz="-0.32000 0.00000 -2.53589"/>
+      <parent link="${parent}"/>
+      <child link="gripper_right_link"/>
+      <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+
+    <link name="gripper_left_link">
+      <collision name="gripper_left_collision">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="1.05643 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.18750" ixy="0.00000" ixz="0.00000" iyy="0.15104" iyz="0.00000" izz="0.03854"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="1.05643 0.00000 0.00000"/>
+        <mass value="5.00000"/>
+      </inertial>
+      <visual name="gripper_left">
+        <origin rpy="3.14159 0.00000 3.14159" xyz="1.05643 0.00000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
+        </geometry>
+      </visual>
+    </link>
+    
+    <link name="gripper_right_link">
+      <collision name="gripper_right_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia ixx="0.18750" ixy="0.00000" ixz="0.00000" iyy="0.15104" iyz="0.00000" izz="0.03854"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
+        <mass value="5.00000"/>
+      </inertial>
+      <visual name="gripper_right">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
+        <material name="yellow.001"/>
+        <geometry>
+          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
+        </geometry>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

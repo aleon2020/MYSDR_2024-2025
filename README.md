@@ -42,6 +42,8 @@ A continuación se detallan los enlaces a las entradas de los blogs correspondie
 
 [PRÁCTICA 2: DISEÑO 3D DE UN ROBOT EN BLENDER](https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-2:-Dise%C3%B1o-3D-de-un-Robot-en-Blender)
 
+[PRÁCTICA 3: SIMULACIÓN DE ROBOTS USANDO MIDDLEWARE E INTEGRACIÓN Y ESTUDIO DE DINÁMICAS EN GAZEBO Y ROS 2](https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-3:-Simulaci%C3%B3n-de-Robots-usando-Middleware-e-Integraci%C3%B3n-y-Estudio-de-Din%C3%A1micas-en-Gazebo-y-ROS-2)
+
 ## 4. Referencias
 
 Ejecuta el siguiente comando en una terminal de los ordenadores de los laboratorios de la universidad para confirmar la asistencia a clase:

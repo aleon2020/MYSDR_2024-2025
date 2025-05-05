@@ -49,7 +49,7 @@
         <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="red.001"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.003.dae" scale="0.05000 1.00000 0.35000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cube.003.dae" scale="0.05000 1.00000 0.35000"/>
         </geometry>
       </visual>
     </link>

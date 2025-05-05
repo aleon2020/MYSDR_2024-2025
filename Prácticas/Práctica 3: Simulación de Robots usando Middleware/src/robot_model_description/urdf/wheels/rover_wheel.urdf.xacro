@@ -64,7 +64,7 @@
       <collision name="subjection_down_left_wheel_collision">
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
         <!--
         <surface>
@@ -89,7 +89,7 @@
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.009.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -98,7 +98,7 @@
       <collision name="subjection_down_right_wheel_collision">
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -110,7 +110,7 @@
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.004.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -119,7 +119,7 @@
       <collision name="subjection_up_left_wheel_collision">
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -131,7 +131,7 @@
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.010.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -140,7 +140,7 @@
       <collision name="subjection_up_right_wheel_collision">
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -152,7 +152,7 @@
         <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.011.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -161,7 +161,7 @@
       <collision name="wheel_down_left_collision">
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -173,7 +173,7 @@
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.002.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -182,7 +182,7 @@
       <collision name="wheel_down_right_collision">
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -194,7 +194,7 @@
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.003.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -203,7 +203,7 @@
       <collision name="wheel_up_left_collision">
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -215,7 +215,7 @@
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.001.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>
@@ -224,7 +224,7 @@
       <collision name="wheel_up_right_collision">
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </collision>
       <inertial>
@@ -236,7 +236,7 @@
         <origin rpy="0.00000 -1.57080 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cylinder.dae" scale="0.05000 0.05000 0.20000"/>
         </geometry>
       </visual>
     </link>

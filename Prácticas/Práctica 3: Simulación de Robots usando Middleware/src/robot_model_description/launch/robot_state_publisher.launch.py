@@ -18,7 +18,7 @@ def generate_launch_description():
     robot_description_content = Command([
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
-            PathJoinSubstitution([FindPackageShare("robot_description"), "robots", "robot.urdf.xacro"]),
+            PathJoinSubstitution([FindPackageShare("robot_model_description"), "robots", "robot.urdf.xacro"]),
     ])
 
     robot_description_param = launch_ros.descriptions.ParameterValue(robot_description_content, value_type=str)
@@ -46,7 +46,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', PathJoinSubstitution([FindPackageShare("robot_description"), "rviz", "robot.rviz"])]
+        arguments=['-d', PathJoinSubstitution([FindPackageShare("robot_model_description"), "rviz", "robot.rviz"])]
     )
 
     return LaunchDescription([

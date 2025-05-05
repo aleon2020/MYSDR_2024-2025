@@ -65,7 +65,7 @@ def generate_launch_description():
     model_path = ''
     resource_path = ''
 
-    pkg_path = get_package_share_directory('robot_description')
+    pkg_path = get_package_share_directory('robot_model_description')
     model_path += join(pkg_path, 'models')
     resource_path += pkg_path + model_path
 
@@ -74,11 +74,11 @@ def generate_launch_description():
     if 'GZ_SIM_RESOURCE_PATH' in environ:
         resource_path += pathsep+environ['GZ_SIM_RESOURCE_PATH']
 
-    model_path = get_model_paths(['robot_description'])
+    model_path = get_model_paths(['robot_model_description'])
 
     robot_description_launcher = IncludeLaunchDescription(
        PathJoinSubstitution(
-           [FindPackageShare("robot_description"), "launch", "robot_state_publisher.launch.py"]
+           [FindPackageShare("robot_model_description"), "launch", "robot_state_publisher.launch.py"]
        ),
     )
 
@@ -86,7 +86,7 @@ def generate_launch_description():
 
     # Rviz config and launching
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("robot_description"), "rviz", "robot.rviz"]
+        [FindPackageShare("robot_model_description"), "rviz", "robot.rviz"]
     )
 
     rviz_node = Node(
@@ -109,6 +109,12 @@ def generate_launch_description():
             "robot_description",
             "-use_sim_time",
             "True",
+            "-x", "0.0",
+            "-y", "0.0",
+            "-z", "-2.0",
+            "-R", "0.0",
+            "-P", "0.0",
+            "-Y", "1.57",
         ],
     )
 

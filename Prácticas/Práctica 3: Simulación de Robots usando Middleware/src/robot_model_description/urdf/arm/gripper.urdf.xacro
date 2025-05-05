@@ -23,7 +23,7 @@
       <collision name="gripper_left_collision">
         <origin rpy="3.14159 0.00000 3.14159" xyz="1.05643 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
         </geometry>
       </collision>
       <inertial>
@@ -35,7 +35,7 @@
         <origin rpy="3.14159 0.00000 3.14159" xyz="1.05643 0.00000 0.00000"/>
         <material name="yellow.001"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cube.009.dae" scale="0.30000 0.15000 0.02500"/>
         </geometry>
       </visual>
     </link>
@@ -44,7 +44,7 @@
       <collision name="gripper_right_collision">
         <origin rpy="0.00000 0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
         </geometry>
       </collision>
       <inertial>
@@ -56,7 +56,7 @@
         <origin rpy="0.00000 0.00000 0.00000" xyz="-1.05643 0.00000 0.00000"/>
         <material name="yellow.001"/>
         <geometry>
-          <mesh filename="file://$(find robot_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
+          <mesh filename="file://$(find robot_model_description)/meshes/dae/Cube.008.dae" scale="0.30000 0.15000 0.02500"/>
         </geometry>
       </visual>
     </link>

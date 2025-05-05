@@ -11,7 +11,7 @@ def generate_launch_description():
         description="use_sim_time simulation parameter"
     )
 
-    pkg_share_folder = get_package_share_directory("robot_description")
+    pkg_share_folder = get_package_share_directory("robot_model_description")
 
     # Load joint state broadcaster controller
     joint_state_broadcaster = GroupAction(

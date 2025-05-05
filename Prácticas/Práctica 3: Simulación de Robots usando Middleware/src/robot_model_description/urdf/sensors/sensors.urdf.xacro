@@ -4,14 +4,14 @@
   <xacro:macro name="sensors"  params="parent">
 
     <joint name="sensors_link_joint" type="fixed">
-      <origin rpy="-3.14159 0.00000 -3.14159" xyz="0.00000 0.00000 -1.25000"/>
+      <origin rpy="0.00000 1.57000 -1.57000" xyz="0.00000 0.00000 -1.25000"/>
       <parent link="${parent}"/> 
       <child link="sensors_link"/>
     </joint>
 
     <link name="sensors_link">
       <visual name="sensors">
-        <origin rpy="3.14159 -1.57080 3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>
         <geometry>
           <box size="0.10000 0.30000 0.20000"/>

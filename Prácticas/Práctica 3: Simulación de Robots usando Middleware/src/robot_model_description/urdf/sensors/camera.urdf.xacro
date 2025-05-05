@@ -4,14 +4,14 @@
   <xacro:macro name="camera" params="parent" >
 
     <joint name="camera_link_joint" type="fixed">
-      <origin rpy="-3.14159 0.00000 -3.14159" xyz="0.00000 -1.90000 0.45000"/>
+      <origin rpy="0.00000 0.00000 -1.57000" xyz="0.00000 -1.90000 0.65000"/>
       <parent link="${parent}"/> 
       <child link="camera_link"/>
     </joint>
 
     <link name="camera_link">
       <visual name="camera">
-        <origin rpy="3.14159 -1.57080 3.14159" xyz="0.00000 0.00000 0.00000"/>
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.20000"/>
         <material name="black.007"/>
         <geometry>
           <box size="0.10000 0.30000 0.20000"/>

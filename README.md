@@ -22,7 +22,7 @@ git pull
 
 ## 1. Resumen de los contenidos de teoría
 
-Fichero ['Resumen Teoría MYSDR.pdf'](https://docs.google.com/document/d/1y3Q7GgEejyoxlOSpxPT9V2QRLcsYTxEWosN7k4ag7v8/edit?usp=sharing): Resumen de teoría en formato PDF.
+Fichero ['Resumen Teoría MYSDR.pdf'](https://github.com/aleon2020/MYSDR_2024-2025/blob/main/Resumen%20Teor%C3%ADa%20MYSDR.pdf): Resumen de teoría en formato PDF.
 
 IMPORTANTE: Para hacer uso del índice interactivo que viene implementado en el resumen, debes descargar el documento en formato PDF.
 

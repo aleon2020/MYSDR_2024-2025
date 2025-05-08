@@ -256,10 +256,10 @@
     <gazebo reference="${prefix}wheel_link">
       <mu1>5</mu1>
       <mu2>5</mu2>
-      <kp>2.75e6</kp>
-      <kd>8.25e1</kd>
-      <fdir1>0 0 0</fdir1>
-      <maxContacts>4</maxContacts>
+      # <kp>2.75e6</kp>
+      # <kd>8.25e1</kd>
+      # <fdir1>0 0 0</fdir1>
+      # <maxContacts>4</maxContacts>
     </gazebo>
     -->
 

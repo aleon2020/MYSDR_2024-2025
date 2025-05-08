@@ -1,0 +1,9 @@
+# Default initial positions for robot_model's ros2_control fake system
+
+initial_positions:
+  arm_1_link_joint: 0
+  arm_2_link_joint: 0
+  arm_column_link_joint: 0
+  arm_gripper_link_joint: 0
+  gripper_left_link_joint: 0
+  gripper_right_link_joint: 0

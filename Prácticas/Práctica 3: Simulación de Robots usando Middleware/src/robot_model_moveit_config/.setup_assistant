@@ -1,0 +1,27 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: robot_model_description
+    relative_path: robots/robot.urdf.xacro
+  srdf:
+    relative_path: config/robot_model.srdf
+  package_settings:
+    author_name: Alberto León Luengo
+    author_email: a.leon.2020@alumnos.urjc.es
+    generated_timestamp: 1746690516
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+      - effort
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+      - effort

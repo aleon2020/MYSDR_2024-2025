@@ -57,7 +57,7 @@ def get_model_paths(packages_names):
 
 # Launch description
 def generate_launch_description():
-    # moveit_config = MoveItConfigsBuilder("robot_model", package_name="robot_model_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("robot_model", package_name="robot_model_moveit_config").to_moveit_configs()
     declare_sim_time = DeclareLaunchArgument(
         'use_sim_time', default_value='true',
         description="use_sim_time simulation parameter"
@@ -78,7 +78,7 @@ def generate_launch_description():
 
     robot_description_launcher = IncludeLaunchDescription(
        PathJoinSubstitution(
-           [FindPackageShare("robot_model_description"), "launch", "robot_state_publisher.launch.py"]
+           [FindPackageShare("robot_model_moveit_config"), "launch", "rsp.launch.py"]
        ),
     )
 

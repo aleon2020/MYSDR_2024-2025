@@ -58,6 +58,7 @@ controller_manager:
     state_interfaces:
       - position
       - velocity
+      - effort
     allow_nonzero_velocity_at_trajectory_end: true
 
 /**/gripper_controller:
@@ -70,4 +71,5 @@ controller_manager:
     state_interfaces:
       - position
       - velocity
+      - effort
     allow_nonzero_velocity_at_trajectory_end: true

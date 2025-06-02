@@ -10,6 +10,12 @@
     </joint>
 
     <link name="IMU_link">
+      <collision name="IMU_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+            <box size="0.10000 0.10000 0.10000"/>
+        </geometry>
+      </collision>
       <visual name="IMU">
         <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
         <material name="black.007"/>

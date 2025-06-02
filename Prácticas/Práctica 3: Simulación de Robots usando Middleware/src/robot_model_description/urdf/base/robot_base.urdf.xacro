@@ -3,37 +3,37 @@
 
   <xacro:macro name="robot_base" >
 
-    <joint name="Base_link_joint" type="fixed">
+    <joint name="base_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 1.00000"/>
       <parent link="base_footprint"/>
-      <child link="Base_link"/>
+      <child link="base_link"/>
     </joint>
 
     <joint name="box_down_side_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 1.57080" xyz="0.00000 1.86075 0.77413"/>
-      <parent link="Base_link"/>
+      <parent link="base_link"/>
       <child link="box_down_side_link"/>
     </joint>
 
     <joint name="box_left_side_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.45000 0.91075 0.77413"/>
-      <parent link="Base_link"/>
+      <parent link="base_link"/>
       <child link="box_left_side_link"/>
     </joint>
 
     <joint name="box_right_side_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 0.00000" xyz="-0.45000 0.91075 0.77413"/>
-      <parent link="Base_link"/>
+      <parent link="base_link"/>
       <child link="box_right_side_link"/>
     </joint>
 
     <joint name="box_up_side_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 1.57080" xyz="0.00000 -0.03925 0.77413"/>
-      <parent link="Base_link"/>
+      <parent link="base_link"/>
       <child link="box_up_side_link"/>
     </joint>
 
-    <link name="Base_link">
+    <link name="base_link">
       <collision name="Base_collision">
         <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.09000 -0.07000"/>
         <geometry>
@@ -138,7 +138,21 @@
       </visual>
     </link>
     
-    <link name="base_footprint"/>
+    <link name="base_footprint">
+      <collision name="base_footprint_collision">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <geometry>
+          <box size="0.10000 0.10000 0.10000"/>
+        </geometry>
+      </collision>
+      <visual name="base_footprint">
+        <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+        <material name="red.001"/>
+        <geometry>
+          <box size="0.10000 0.10000 0.10000"/>
+        </geometry>
+      </visual>
+    </link>
 
   </xacro:macro>
 </robot>

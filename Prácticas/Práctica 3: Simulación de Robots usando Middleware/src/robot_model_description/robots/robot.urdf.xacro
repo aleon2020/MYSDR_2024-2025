@@ -15,12 +15,6 @@
 
     <!-- properties -->
     <xacro:property name="PI" value="3.1415926535897931"/>
-    <xacro:property name="wheel_offset_x" value="0.95"/>
-    <xacro:property name="wheel_offset_y" value="0.95"/>
-    <xacro:property name="wheel_offset_z" value="-0.38"/>
-    <xacro:property name="arm_offset_x" value="0.0"/>
-    <xacro:property name="arm_offset_y" value="0.82"/>
-    <xacro:property name="arm_offset_z" value="0.69"/>
 
     <!-- arguments -->
     <xacro:arg name="robot_ns" default=""/>
@@ -33,21 +27,20 @@
     <xacro:robot_base/>
 
     <!-- wheels -->
-    <xacro:rover_wheel parent="Base_link"/>
+    <xacro:rover_wheel parent="base_link"/>
 
     <!-- arm -->
-    <xacro:scara parent="Base_link"/>
+    <xacro:scara parent="base_link"/>
     <xacro:gripper parent="arm_gripper_link"/>
 
     <!-- sensors -->
-    <xacro:camera parent="Base_link"/>
+    <xacro:camera parent="base_link"/>
     <xacro:sensors parent="arm_gripper_link"/>
-    <xacro:imu_sensor parent="arm_gripper_link"/>
+    <xacro:imu_sensor parent="base_link"/>
 
     <!-- gazebo ROS control plugins -->
-    <xacro:include filename="$(find robot_model_description)/urdf/ros2_control.urdf.xacro"/>
     <xacro:arg name="config_controllers" default="$(find robot_model_description)/config/rover_controllers.yaml"/>
-    <xacro:arg name="update_rate" default="20"/>
+    <xacro:arg name="update_rate" default="30"/>
     <xacro:ros2_control/>
    
 </robot>

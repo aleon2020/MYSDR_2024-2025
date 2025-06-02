@@ -4,7 +4,7 @@
   <xacro:macro name="gripper"  params="parent" >
   
     <joint name="gripper_left_link_joint" type="prismatic">
-      <limit lower="0.00000" upper="0.15000" effort="0.00000" velocity="0.00000"/>
+      <limit lower="0.00000" upper="0.15000" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 -1.57080 0.00000" xyz="0.32000 0.00000 -2.53589"/>
       <parent link="${parent}"/>
       <child link="gripper_left_link"/>
@@ -12,7 +12,7 @@
     </joint>
 
     <joint name="gripper_right_link_joint" type="prismatic">
-      <limit lower="0.00000" upper="0.15000" effort="0.00000" velocity="0.00000"/>
+      <limit lower="0.00000" upper="0.15000" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 1.57080 0.00000" xyz="-0.32000 0.00000 -2.53589"/>
       <parent link="${parent}"/>
       <child link="gripper_right_link"/>

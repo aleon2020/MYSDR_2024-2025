@@ -159,7 +159,7 @@ def generate_launch_description():
             {
                 "use_sim_time": True,
             }],
-        remappings={('cmd_vel_out', '/robot_base_control/cmd_vel'),
+        remappings={('cmd_vel_out', '/robot_base_control/cmd_vel'), # '/robot_model_base_control/cmd_vel'
                     ('cmd_vel_in', '/cmd_vel')},
     )
 

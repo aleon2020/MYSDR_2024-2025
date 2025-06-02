@@ -4,7 +4,7 @@
   <xacro:macro name="scara" params="parent" >
 
     <joint name="arm_1_link_joint" type="continuous">
-      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <limit lower="0" upper="0" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.65000"/>
       <parent link="arm_column_link"/>
       <child link="arm_1_link"/>
@@ -12,7 +12,7 @@
     </joint>
 
     <joint name="arm_2_link_joint" type="continuous">
-      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <limit lower="0" upper="0" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 0.20000"/>
       <parent link="arm_1_link"/>
       <child link="arm_2_link"/>
@@ -21,12 +21,12 @@
 
     <joint name="arm_base_link_joint" type="fixed">
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.08925 0.52413"/>
-      <parent link="Base_link"/>
+      <parent link="base_link"/>
       <child link="arm_base_link"/>
     </joint>
 
     <joint name="arm_column_link_joint" type="continuous">
-      <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+      <limit lower="0" upper="0" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.85000"/>
       <parent link="arm_base_link"/>
       <child link="arm_column_link"/>
@@ -34,7 +34,7 @@
     </joint>
 
     <joint name="arm_gripper_link_joint" type="prismatic">
-      <limit lower="-1.25000" upper="1.00000" effort="0.00000" velocity="0.00000"/>
+      <limit lower="-1.25000" upper="1.00000" effort="1000.00000" velocity="100.00000"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -1.00000 -0.07053"/>
       <parent link="arm_2_link"/>
       <child link="arm_gripper_link"/>

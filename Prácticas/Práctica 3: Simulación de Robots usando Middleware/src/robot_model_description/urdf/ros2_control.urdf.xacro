@@ -4,17 +4,29 @@
   <xacro:macro name="ros2_control">
 
     <gazebo>
-      <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <plugin filename="libgz_ros2_control-system.so" 
+              name="gz_ros2_control::GazeboSimROS2ControlPlugin">
         <parameters>$(arg config_controllers)</parameters>
+      </plugin>
+      <plugin name="libgazebo_ros_diff_drive.so" 
+              filename="gazebo_ros_diff_drive">
+      <ros>
+        <remapping>cmd_vel:=/cmd_vel</remapping>
+      </ros>
+      <left_joint>wheel_down_left_link_joint</left_joint>
+      <right_joint>wheel_down_right_link_joint</right_joint>
+      <wheel_separation>1.5</wheel_separation>
+      <wheel_radius>0.3</wheel_radius>
       </plugin>
     </gazebo>
 
     <ros2_control name="robot_model_interface" type="system">
-
       <hardware>
         <plugin>gz_ros2_control/GazeboSimSystem</plugin>
       </hardware>
 
+      <!-- Interfaces de las articulaciones -->
+      <!-- Rueda delantera izquierda -->
       <joint name="wheel_up_left_link_joint">
         <command_interface name="velocity">
           <param name="min">-10</param>
@@ -25,6 +37,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- Rueda delantera derecha -->
       <joint name="wheel_up_right_link_joint">
         <command_interface name="velocity">
           <param name="min">-10</param>
@@ -35,6 +48,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- Rueda trasera izquierda -->
       <joint name="wheel_down_left_link_joint">
         <command_interface name="velocity">
           <param name="min">-10</param>
@@ -45,6 +59,7 @@
         <state_interface name="effort"/>
       </joint>
 
+      <!-- Rueda trasera derecha -->
       <joint name="wheel_down_right_link_joint">
         <command_interface name="velocity">
           <param name="min">-10</param>

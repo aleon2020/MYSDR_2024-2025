@@ -56,22 +56,22 @@
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="gripper" parent_link="arm_gripper_link" group="gripper" parent_group="scara"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="Base_link" link2="arm_1_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="arm_2_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="arm_base_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="arm_column_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="box_down_side_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="box_left_side_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="box_right_side_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="box_up_side_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="subjection_down_left_wheel_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="subjection_down_right_wheel_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="subjection_up_left_wheel_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="subjection_up_right_wheel_link" reason="Adjacent"/>
-    <disable_collisions link1="Base_link" link2="wheel_down_left_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="wheel_down_right_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="wheel_up_left_link" reason="Never"/>
-    <disable_collisions link1="Base_link" link2="wheel_up_right_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="arm_1_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="arm_2_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="arm_base_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="arm_column_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="box_down_side_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="box_left_side_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="box_right_side_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="box_up_side_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="subjection_down_left_wheel_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="subjection_down_right_wheel_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="subjection_up_left_wheel_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="subjection_up_right_wheel_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="wheel_down_left_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="wheel_down_right_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="wheel_up_left_link" reason="Never"/>
+    <disable_collisions link1="base_link" link2="wheel_up_right_link" reason="Never"/>
     <disable_collisions link1="arm_1_link" link2="arm_2_link" reason="Adjacent"/>
     <disable_collisions link1="arm_1_link" link2="arm_base_link" reason="Never"/>
     <disable_collisions link1="arm_1_link" link2="arm_column_link" reason="Adjacent"/>

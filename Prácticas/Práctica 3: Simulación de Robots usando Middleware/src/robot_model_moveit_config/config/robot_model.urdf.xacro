@@ -5,7 +5,6 @@
     <!-- Import robot_model urdf file -->
     <xacro:include filename="$(find robot_model_description)/robots/robot.urdf.xacro" />
 
-    <!-- Import control_xacro -->
     <xacro:include filename="robot_model.srdf" />
 
     <!-- Import control_xacro -->

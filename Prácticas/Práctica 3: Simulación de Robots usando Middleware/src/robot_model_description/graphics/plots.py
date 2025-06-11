@@ -6,7 +6,7 @@ from rclpy.serialization import deserialize_message
 import rosbag2_py
 from rosidl_runtime_py.utilities import get_message
 
-bag_directory = "/ROSBAG/PATH"
+bag_directory = "/home/aalbeerto-02/mysdr_ws/src/robot_model_description/graphics/rosbag2_2025_06_11-16_10_52"
 arm_joint_names = [
     "arm_column_link_joint",
     "arm_1_link_joint",

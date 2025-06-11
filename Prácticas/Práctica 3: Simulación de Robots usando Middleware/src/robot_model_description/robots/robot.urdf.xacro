@@ -39,6 +39,7 @@
     <xacro:imu_sensor parent="base_link"/>
 
     <!-- gazebo ROS control plugins -->
+    <!-- <xacro:include filename="$(find robot_model_description)/urdf/ros2_control.urdf.xacro"/> -->
     <xacro:arg name="config_controllers" default="$(find robot_model_description)/config/rover_controllers.yaml"/>
     <xacro:arg name="update_rate" default="30"/>
     <xacro:ros2_control/>

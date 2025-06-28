@@ -1,5 +1,5 @@
 ENLACE AL CÓDIGO FUENTE:
-https://github.com/aleon2020/MYSDR_2024-2025/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%203%3A%20Simulaci%C3%B3n%20de%20Robots%20usando%20Middleware/src
+https://github.com/aleon2020/MYSDR_2024-2025/tree/main/Pr%C3%A1cticas/Pr%C3%A1ctica%202%3A%20Dise%C3%B1o%203D%20de%20un%20Robot%20en%20Blender/src
 
 ENLACE AL BLOG:
-https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-3:-Simulaci%C3%B3n-de-Robots-usando-Middleware-e-Integraci%C3%B3n-y-Estudio-de-Din%C3%A1micas-en-Gazebo-y-ROS-2
+https://github.com/aleon2020/MYSDR_2024-2025/wiki/Pr%C3%A1ctica-2:-Dise%C3%B1o-3D-de-un-Robot-en-Blender
